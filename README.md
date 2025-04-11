@@ -10,3 +10,32 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+Pages : 
+- Home (public) ==>  listing-list
+- Profile (private) 
+- Signup (public)
+- Login (public)
+- Create Listing (private) ==>  listing-form
+- Edit Listing (private) ==>  listing-form
+- Listing detail (public)
+- My Listings (private) ==>  listing-list
+- Create Request (private) ==> request-form
+- Edit Request (private) ==> request-form
+- Request detail (private)
+- My Request (private) = traveler request list ==> request-list
+- Page Not Found
+- About
+
+Components : 
+- API Context ( auth/user - listings ? - request ? )
+- Header/Nav (Logo + menu)
+- Footer
+- Signup-form
+- Login-form
+- Listing-list
+- Listind-card (optional)
+- Listing-form
+- Request-list
+- Request-card (optional)
+- Request-form
