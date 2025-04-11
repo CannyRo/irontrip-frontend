@@ -1,33 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// import { useState } from 'react'
 import './App.css'
+import { Routes, Route } from 'react-router'
+import { HomePage } from './pages/HomePage'
+import { SignupPage } from './pages/SignupPage'
+import { LoginPage } from './pages/LoginPage'
+import { ProfilePage } from './pages/ProfilePage'
+import { ListingDetailPage } from './pages/ListingDetailPage'
+import { CreateListingPage } from './pages/CreateListingPage'
+import { EditListingPage } from './pages/EditListingPage'
+import { RequestDetailPage } from './pages/RequestDetailPage'
+import { CreateRequestPage } from './pages/CreateRequestPage'
+import { EditRequestPage } from './pages/EditRequestPage'
+import { NotFoundPage } from './pages/NotFoundPage'
+import { Navbar } from './components/Navbar'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <Navbar/>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/profile" element={<ProfilePage />}/>
+        <Route path="/listing/:listingId" element={<ListingDetailPage />} />
+        <Route path="/create-listing" element={<CreateListingPage /> } />
+        <Route path="/edit-listing/:listingId" element={<EditListingPage />} />
+        <Route path="/request/:requestId" element={<RequestDetailPage />} />
+        <Route path="/create-request" element={<CreateRequestPage /> } />
+        <Route path="/edit-request/:requestId" element={<EditRequestPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </>
   )
 }
