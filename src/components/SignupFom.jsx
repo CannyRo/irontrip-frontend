@@ -2,17 +2,27 @@ import { useState } from "react";
 import { signup } from "../services/auth.service";
 import { useNavigate } from "react-router";
 
+
 export const SignupFom = () => {
-  const [username, setUsername] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [city, setCity] = useState();
-  const [country, setCountry] = useState();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [error, setError] = useState(null);
 
   const nav = useNavigate();
 
   async function handleSignup(e) {
     e.preventDefault();
+    setError(null); // Reset error state
+
+    // Basic validation
+    if (!username || !email || !password || !city || !country) {
+      setError("All fields are required.");
+      return;
+    }
+
     const formattedUser = {
       username: username,
       email: email,
@@ -26,6 +36,7 @@ export const SignupFom = () => {
         nav("/login");
     } catch(error) {
         console.log(error);
+        setError("Failed to create user. Please check your connection or try again.");
     }
   };
 

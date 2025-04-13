@@ -20,9 +20,9 @@ const AuthContextWrapper = ({ children }) => {
       setIsLoggedIn(false);
     } else {
       try {
-        const repsonseFromVerifyRoute = await verify();
-        console.log("authenticate user function", repsonseFromVerifyRoute);
-        setUser(repsonseFromVerifyRoute.data.payload);
+        const responseFromVerifyRoute = await verify(); // Corrected typo here
+        console.log("authenticate user function", responseFromVerifyRoute);
+        setUser(responseFromVerifyRoute.data.payload); // Corrected typo here
         setIsLoading(false);
         setIsLoggedIn(true);
       } catch (error) {
