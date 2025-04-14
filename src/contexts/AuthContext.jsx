@@ -1,11 +1,13 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { logout, verify } from "../services/auth.service";
+import { getUserById } from "../services/user.service";
 
 const AuthContext = createContext();
 
 const AuthContextWrapper = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [userDetail, setUserDetail] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const nav = useNavigate();
@@ -25,9 +27,13 @@ const AuthContextWrapper = ({ children }) => {
         setUser(repsonseFromVerifyRoute.data.payload);
         setIsLoading(false);
         setIsLoggedIn(true);
+        const userDetail = await getUserById(repsonseFromVerifyRoute.data.payload.id);
+        console.log("=== userDetail === ", userDetail);
+        setUserDetail(userDetail.data);
       } catch (error) {
         console.log(error);
         setUser(null);
+        setUserDetail(null);
         setIsLoading(false);
         setIsLoggedIn(false);
       }
@@ -52,6 +58,7 @@ const AuthContextWrapper = ({ children }) => {
         isLoggedIn,
         isLoading,
         user,
+        userDetail,
         authenticateUser,
         handleLougoutuser,
       }}

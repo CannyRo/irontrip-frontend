@@ -14,6 +14,8 @@ import { EditRequestPage } from "./pages/EditRequestPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import { ListingsPage } from "./pages/ListingsPage";
+import { RequestsPage } from "./pages/RequestsPage";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -26,9 +28,11 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/listings" element={<ListingsPage/>} />
         <Route path="/listing/:listingId" element={<ListingDetailPage />} />
         <Route path="/create-listing" element={<CreateListingPage />} />
         <Route path="/edit-listing/:listingId" element={<EditListingPage />} />
+        <Route path="requests" element={<RequestsPage />} />
         <Route path="/request/:requestId" element={<RequestDetailPage />} />
         <Route path="/create-request" element={<CreateRequestPage />} />
         <Route path="/edit-request/:requestId" element={<EditRequestPage />} />
