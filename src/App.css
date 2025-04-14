@@ -23,14 +23,12 @@ a:hover {
 }
 
 button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
-  outline: none;
   padding: 12px 20px;
   font-size: 16px;
-  border-radius: 30px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
+  border-radius: 30px; /* Fully rounded buttons */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 button.primary {
@@ -51,6 +49,47 @@ button.danger {
 button.danger:hover {
   background-color: #4A4A48; /* Dark gray */
   transform: scale(1.05);
+}
+
+.create-listing-container button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px; /* Fully rounded buttons */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Submit Button */
+.create-listing-container button[type="submit"] {
+  background-color: #F4A259; /* Accent orange */
+  color: #121212; /* Dark text for contrast */
+}
+
+.create-listing-container button[type="submit"]:hover {
+  background-color: #D98E4A; /* Darker accent orange */
+  transform: scale(1.05); /* Slight zoom on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Add Availability Button */
+.add-availability-button {
+  background-color: #8CBAC7; /* Muted blue */
+  color: #121212; /* Dark text for contrast */
+}
+
+.add-availability-button:hover {
+  background-color: #DCE7ED; /* Light blue */
+  transform: scale(1.05);
+}
+
+.remove-availability-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.remove-availability-button:hover {
+  background-color: #a71d2a;
 }
 
 .container {
@@ -183,11 +222,12 @@ footer {
 
 /* Header styling */
 .create-listing-container h2 {
-  text-align: center;
-  margin-bottom: 30px; /* Add more spacing below the header */
-  color: #F4A259; /* Accent color */
-  font-size: 32px; /* Slightly larger font size */
+  font-size: 36px; /* Larger font size */
   font-weight: bold;
+  color: #F4A259; /* Muted blue */
+  text-align: center;
+  margin-bottom: 30px; /* Add spacing below the header */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
 }
 
 /* Form layout */
@@ -202,8 +242,9 @@ footer {
   display: flex;
   flex-direction: column;
   font-weight: bold;
-  color: #555;
+  color: #DCE7ED; /* Light blue for better readability */
   font-size: 16px;
+  margin-bottom: 5px; /* Add spacing below labels */
 }
 
 /* Input and textarea styling */
@@ -240,22 +281,10 @@ footer {
   transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Primary button (Create Listing) */
-.create-listing-container button[type="submit"] {
-  background-color: #F4A259; /* Accent color */
-  color: #121212; /* Dark text for contrast */
-}
-
-.create-listing-container button[type="submit"]:hover {
-  background-color: #D98E4A; /* Darker accent color */
-  transform: scale(1.05); /* Slight zoom on hover */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-}
-
 /* Add Availability button */
 .add-availability-button {
-  background-color: #28a745; /* Green for availability */
-  color: #FFFFFF; /* White text */
+  background-color: #8CBAC7; /* Muted blue */
+  color: #121212; /* Dark text for contrast */
   padding: 12px 20px;
   font-size: 16px;
   border-radius: 30px; /* Fully rounded button */
@@ -263,7 +292,7 @@ footer {
 }
 
 .add-availability-button:hover {
-  background-color: #1e7e34; /* Darker green */
+  background-color: #DCE7ED; /* Light blue */
   transform: scale(1.05); /* Slight zoom on hover */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
@@ -308,10 +337,10 @@ footer {
 .availability-section {
   margin-top: 20px;
   padding: 20px;
-  background-color: #4A4A48; /* Dark gray */
+  background-color: #2D4A53; /* Muted teal background */
   border-radius: 10px;
   border: 1px solid #8CBAC7; /* Muted blue border */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .availability-section h4 {
@@ -322,6 +351,7 @@ footer {
   text-align: center;
 }
 
+/* Availability section label styling */
 .availability-section label {
   font-weight: bold;
   color: #DCE7ED; /* Light blue for better contrast */
