@@ -8,6 +8,7 @@ export const ListingForm = ({
     country: "",
     description: "",
     availability: [{ startDate: "", endDate: "" }],
+    image: "", // Default value for the image URL
   },
   onSubmit,
 }) => {
@@ -17,6 +18,7 @@ export const ListingForm = ({
   const [country, setCountry] = useState(initialValues.country);
   const [description, setDescription] = useState(initialValues.description);
   const [availability, setAvailability] = useState(initialValues.availability);
+  const [image, setImage] = useState(initialValues.image); // Use a text input for the image URL
 
   const addAvailability = () => {
     setAvailability([...availability, { startDate: "", endDate: "" }]);
@@ -42,6 +44,7 @@ export const ListingForm = ({
       country,
       description,
       availability,
+      image, // Pass the image URL
     });
   };
 
@@ -89,6 +92,15 @@ export const ListingForm = ({
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
+        />
+      </label>
+      <label>
+        Image URL:
+        <input
+          type="text"
+          value={image}
+          onChange={(e) => setImage(e.target.value)} // Update the image URL
+          placeholder="Enter the image URL"
         />
       </label>
       <div className="availability-section">

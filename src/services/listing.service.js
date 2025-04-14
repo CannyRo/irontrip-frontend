@@ -37,7 +37,12 @@ export async function getAllListings() {
   return api.get("/listing"); 
 }
 
-// Get all listings by user (host)
+// Get all listings by user 
 export async function getAllListingsByUser(userId) {
   return api.get(`/listing/host/${userId}`); 
+}
+
+// Get all listings by host
+export async function getListingsByHost(userId) {
+  return api.get(`/listing/host/${userId}`);
 }

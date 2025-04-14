@@ -1,28 +1,48 @@
 // ListingsPage.jsx
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router";
-import { ListingContext } from "../contexts/ListingContext";
+import { AuthContext } from "../contexts/AuthContext";
+import { getListingsByHost } from "../services/listing.service";
 
 export const ListingsPage = () => {
-  const { getAllListings } = useContext(ListingContext); // Fetch all listings from context
+  const { user } = useContext(AuthContext); // Get the logged-in user
   const [listings, setListings] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchListings = async () => {
-      const data = await getAllListings();
-      setListings(data);
+      try {
+        if (user && user.id) { // Use user.id instead of user._id
+          const response = await getListingsByHost(user.id); // Fetch listings for the logged-in user
+          setListings(response.data.data); // Set the listings
+        }
+      } catch (err) {
+        console.error("Error fetching listings:", err);
+        setError("Failed to load listings.");
+      } finally {
+        setLoading(false); // Stop loading
+      }
     };
 
     fetchListings();
-  }, [getAllListings]);
+  }, [user]);
+
+  if (loading) {
+    return <p>Loading listings...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   if (listings.length === 0) {
-    return <p>Loading listings...</p>;
+    return <p>No listings found for this user.</p>;
   }
 
   return (
     <div className="listings-page-container">
-      <h2>All Listings</h2>
+      <h2>Your Listings</h2>
       <div className="listings-grid">
         {listings.map((listing) => (
           <div key={listing._id} className="listing-card">
