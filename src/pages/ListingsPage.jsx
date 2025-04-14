@@ -4,7 +4,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import { getListingsByHost } from "../services/listing.service";
 
 export const ListingsPage = () => {
-  const { user } = useContext(AuthContext); // Get the logged-in user
+  const { user } = useContext(AuthContext);
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -12,15 +12,15 @@ export const ListingsPage = () => {
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        if (user && user.id) { // Use user.id instead of user._id
-          const response = await getListingsByHost(user.id); // Fetch listings for the logged-in user
-          setListings(response.data.data); // Set the listings
+        if (user && user.id) {
+          const response = await getListingsByHost(user.id);
+          setListings(response.data.data);
         }
       } catch (err) {
         console.error("Error fetching listings:", err);
         setError("Failed to load listings.");
       } finally {
-        setLoading(false); // Stop loading
+        setLoading(false);
       }
     };
 
@@ -41,19 +41,23 @@ export const ListingsPage = () => {
 
   return (
     <div className="listings-page-container">
-      <h2>Your Listings</h2>
+      <h1 className="listings-header">Your Listings</h1>
       <div className="listings-grid">
         {listings.map((listing) => (
           <div key={listing._id} className="listing-card">
-            <h3>{listing.title}</h3>
-            <p>{listing.description}</p>
-            <div className="listing-actions">
-              <Link to={`/listing/${listing._id}`}>
-                <button>View Details</button>
-              </Link>
-              <Link to={`/edit-listing/${listing._id}`}>
-                <button>Edit Listing</button>
-              </Link>
+            <div className="listing-image">
+                          </div>
+            <div className="listing-content">
+              <h3>{listing.title}</h3>
+              <p>{listing.description}</p>
+              <div className="listing-actions">
+                <Link to={`/listing/${listing._id}`}>
+                  <button className="primary">View Details</button>
+                </Link>
+                <Link to={`/edit-listing/${listing._id}`}>
+                  <button className="secondary">Edit Listing</button>
+                </Link>
+              </div>
             </div>
           </div>
         ))}
