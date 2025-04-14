@@ -42,7 +42,7 @@ const AuthContextWrapper = ({ children }) => {
 
   useEffect(() => {
     console.log("useEffect run");
-    console.log(user)
+    // console.log(user);
     authenticateUser();
   }, []);
 
