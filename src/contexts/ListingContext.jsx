@@ -14,7 +14,7 @@ const ListingContextWrapper = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const nav = useNavigate();
   
- 
+
   const getAllListings = async () => {
     // Replace with your API call
     const response = await fetch("/api/listings");
