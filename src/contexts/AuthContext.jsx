@@ -27,7 +27,7 @@ const AuthContextWrapper = ({ children }) => {
         setUser(responseFromVerifyRoute.data.payload); // Corrected typo here
         setIsLoading(false);
         setIsLoggedIn(true);
-        const userDetail = await getUserById(repsonseFromVerifyRoute.data.payload.id);
+        const userDetail = await getUserById(responseFromVerifyRoute.data.payload.id);
         console.log("=== userDetail === ", userDetail);
         setUserDetail(userDetail.data);
       } catch (error) {
