@@ -1,4 +1,5 @@
 // import { useState } from 'react'
+
 import "./App.css";
 import { Routes, Route } from "react-router";
 import { HomePage } from "./pages/HomePage";
@@ -18,8 +19,7 @@ import { ListingsPage } from "./pages/ListingsPage";
 import { RequestsPage } from "./pages/RequestsPage";
 
 function App() {
-  // const [count, setCount] = useState(0)
-
+ 
   return (
     <>
       <Header />
@@ -36,6 +36,7 @@ function App() {
         <Route path="/request/:requestId" element={<RequestDetailPage />} />
         <Route path="/create-request" element={<CreateRequestPage />} />
         <Route path="/edit-request/:requestId" element={<EditRequestPage />} />
+        <Route path="/listings" element={<ListingsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />

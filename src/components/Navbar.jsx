@@ -9,7 +9,7 @@ export const Navbar = () => {
     console.log("user details from CONTEXT ==> ",userDetail);
     console.log("user ==> ", user);
   }, [user, userDetail]);
-
+  
   return (
     <nav>
       <Link to="/">
@@ -17,17 +17,17 @@ export const Navbar = () => {
       </Link>
       {isLoggedIn && (
         <>
+          <Link to="/create-listing">
+            <button>Create Listing</button>
+          </Link>
           <Link to="/listings">
-            {" "}
-            <button>My Listings</button>{" "}
+            <button>My Listings</button>
           </Link>
           <Link to="/requests">
-            {" "}
-            <button>My Request</button>{" "}
+            <button>My Request</button>
           </Link>
           <Link to="/profile">
-            {" "}
-            <button>My Profile</button>{" "}
+            <button>My Profile</button>
           </Link>
           <button onClick={handleLougoutuser}>Logout</button>
         </>
