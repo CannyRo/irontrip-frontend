@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { ListingContext } from "../contexts/ListingContext";
 import { AuthContext } from "../contexts/AuthContext";
 import { ListingForm } from "../components/ListingForm";
@@ -16,14 +16,21 @@ export const CreateListingPage = () => {
   }, [isLoading, isLoggedIn, navigate]);
 
   const handleSubmit = (listingData) => {
-    if (!user || !user._id) {
+    if (!user || !user.id) {
       console.error("Error: User is not logged in or user is undefined.");
       return;
     }
 
+    const payload = {
+      ...listingData,
+      host: user.id,
+    };
+  
+    console.log("Payload being sent to create listing:", payload)
+
     handleCreateListing({
       ...listingData,
-      owner: user._id,
+      host: user.id,
     });
   };
 

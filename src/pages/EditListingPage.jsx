@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router";
 import { ListingContext } from "../contexts/ListingContext";
 import { ListingForm } from "../components/ListingForm";
 

@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import {
   getAllListings,
   createListing,
@@ -11,6 +12,7 @@ const ListingContext = createContext();
 const ListingContextWrapper = ({ children }) => {
   const [listings, setListings] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const nav = useNavigate();
   
  
   const getAllListings = async () => {
@@ -28,6 +30,7 @@ const ListingContextWrapper = ({ children }) => {
     try {
       const response = await createListing(listingData);
       setListings((prevListings) => [...prevListings, response.data]);
+      nav('/listings')
     } catch (error) {
       console.error("Error creating listing:", error);
     }
