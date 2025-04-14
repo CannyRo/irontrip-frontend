@@ -3,11 +3,13 @@ import { AuthContext } from "../contexts/AuthContext";
 import { Link } from "react-router";
 
 export const Navbar = () => {
-  const { isLoggedIn, user, handleLougoutuser } = useContext(AuthContext);
+  const { isLoggedIn, user, userDetail, handleLougoutuser } = useContext(AuthContext);
 
   useEffect(() => {
+    console.log("user details from CONTEXT ==> ",userDetail);
     console.log("user ==> ", user);
-  }, [user]);
+  }, [user, userDetail]);
+  
   return (
     <nav>
       <Link to="/">
@@ -15,12 +17,17 @@ export const Navbar = () => {
       </Link>
       {isLoggedIn && (
         <>
-          <p>Bonjour {user.username}</p>
+          <Link to="/create-listing">
+            <button>Create Listing</button>
+          </Link>
           <Link to="/listings">
             <button>My Listings</button>
           </Link>
-          <Link to="/create-listing">
-            <button>Create Listing</button>
+          <Link to="/requests">
+            <button>My Request</button>
+          </Link>
+          <Link to="/profile">
+            <button>My Profile</button>
           </Link>
           <button onClick={handleLougoutuser}>Logout</button>
         </>
