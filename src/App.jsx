@@ -13,13 +13,15 @@ import { CreateRequestPage } from './pages/CreateRequestPage'
 import { EditRequestPage } from './pages/EditRequestPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { Navbar } from './components/Navbar'
+import { ListingsPage } from './pages/ListingsPage'
+import { AuthContextWrapper } from './contexts/AuthContext'
 
 function App() {
-  // const [count, setCount] = useState(0)
-
+ 
   return (
     <>
     <Navbar/>
+    <AuthContextWrapper>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/signup" element={<SignupPage />} />
@@ -31,8 +33,10 @@ function App() {
         <Route path="/request/:requestId" element={<RequestDetailPage />} />
         <Route path="/create-request" element={<CreateRequestPage /> } />
         <Route path="/edit-request/:requestId" element={<EditRequestPage />} />
+        <Route path="/listings" element={<ListingsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      </AuthContextWrapper>
     </>
   )
 }
