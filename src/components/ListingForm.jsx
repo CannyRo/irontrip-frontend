@@ -17,7 +17,7 @@ export const ListingForm = ({
   const [city, setCity] = useState(initialValues.city);
   const [country, setCountry] = useState(initialValues.country);
   const [description, setDescription] = useState(initialValues.description);
-  const [availability, setAvailability] = useState(initialValues.availability);
+  const [availability, setAvailability] = useState(initialValues.availability || []); // Default to an empty array
   const [image, setImage] = useState(initialValues.image); // Use a text input for the image URL
 
   const addAvailability = () => {
@@ -105,45 +105,49 @@ export const ListingForm = ({
       </label>
       <div className="availability-section">
         <h4>Availability:</h4>
-        {availability.map((range, index) => (
-          <div key={index} className="availability-range">
-            <label>
-              Start Date:
-              <input
-                type="date"
-                value={range.startDate}
-                onChange={(e) =>
-                  handleAvailabilityChange(index, "startDate", e.target.value)
-                }
-                required
-              />
-            </label>
-            <label>
-              End Date:
-              <input
-                type="date"
-                value={range.endDate}
-                onChange={(e) =>
-                  handleAvailabilityChange(index, "endDate", e.target.value)
-                }
-                required
-              />
-            </label>
-          </div>
-        ))}
-        <div className="availability-buttons">
-          <button type="button" onClick={addAvailability}>
-            Add Availability
+        {availability && availability.length > 0 ? (
+          availability.map((range, index) => (
+            <div key={index} className="availability-range">
+              <label>
+                Start Date:
+                <input
+                  type="date"
+                  value={range.startDate}
+                  onChange={(e) =>
+                    handleAvailabilityChange(index, "startDate", e.target.value)
+                  }
+                  required
+                />
+              </label>
+              <label>
+                End Date:
+                <input
+                  type="date"
+                  value={range.endDate}
+                  onChange={(e) =>
+                    handleAvailabilityChange(index, "endDate", e.target.value)
+                  }
+                  required
+                />
+              </label>
+            </div>
+          ))
+        ) : (
+          <p>No availability provided.</p>
+        )}
+      </div>
+      <div className="availability-buttons">
+        <button type="button" onClick={addAvailability}>
+          Add Availability
+        </button>
+        {availability.length > 1 && (
+          <button
+            type="button"
+            onClick={() => removeAvailability(availability.length - 1)}
+          >
+            Remove Availability
           </button>
-          {availability.length > 1 && (
-            <button
-              type="button"
-              onClick={() => removeAvailability(availability.length - 1)}
-            >
-              Remove Availability
-            </button>
-          )}
-        </div>
+        )}
       </div>
       <button type="submit">Submit</button>
     </form>
