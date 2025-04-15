@@ -2,10 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
 import { RequestContext } from "../contexts/RequestContext";
+import { getRequestsByUser } from "../services/request.service";
 
 export const RequestsPage = () => {
   const { isLoggedIn, isLoading, user } = useContext(AuthContext);
-  const { isLoadingReq, requests } = useContext(RequestContext);
+  const { isLoadingReq } = useContext(RequestContext);
 
   const [myRequests, setMyRequests] = useState([]);
 
@@ -15,16 +16,19 @@ export const RequestsPage = () => {
     if (!isLoading && !isLoggedIn) {
       nav("/login");
     }
-    // console.log("requests from request page : ",requests);
-    // console.log("user === ",user);
-    // console.log(requests.map(req => req.host._id));
-    // console.log(requests.map(req => req.traveler._id));
-    let selectedRequests = requests.filter(
-      (req) => req.host._id == user.id || req.traveler._id == user.id
-    );
-    console.log("selectedRequests _____ ",selectedRequests);
-    setMyRequests(selectedRequests);
-  }, [isLoading, isLoggedIn, nav, requests, user]);
+    if(user && user.id){
+      async function fetchRequests() {
+      try {
+        const res = await getRequestsByUser(user.id);
+        setMyRequests(res.data.data);
+      } catch (err) {
+        console.error("Error :", err);
+      }
+    }
+    fetchRequests();
+    }
+    // console.log("myData ",myRequests);
+  }, [user?.id, user, isLoading, isLoggedIn, nav]);
 
   const getFormattedDate = (isoDate) => new Date(isoDate).toISOString().split("T")[0];
 
@@ -40,7 +44,7 @@ export const RequestsPage = () => {
       <div className="listings-page-container">
         <h2>My Request</h2>
         <div className="listings-grid">
-          {myRequests.map((req) => (
+          {myRequests && myRequests.map((req) => (
             <div key={req._id} className="listing-card">
               <label>
                 Start Date:

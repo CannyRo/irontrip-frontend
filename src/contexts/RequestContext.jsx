@@ -40,6 +40,7 @@ const RequestContextWrapper = ({ children }) => {
   const handleCreateRequest = async (requestData) => {
     try {
       const res = await createRequest(requestData);
+      console.log("res.data - handle create", res.data);
       setRequests((prevRequest) => [res.data.data, ...prevRequest]);
       nav('/requests');
     } catch (error) {

@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 export const RequestForm = ({ onSubmit, isUpdateForm = false, initialData = null }) => {
   console.log("isUpdateForm === ",isUpdateForm);
@@ -14,12 +15,17 @@ export const RequestForm = ({ onSubmit, isUpdateForm = false, initialData = null
   const [messageRequest, setMessageRequest] = useState("");
   const [statusRequest, setStatusRequest] = useState("Pending");
 
+  const { user } = useContext(AuthContext);
+
   useEffect(()=>{
     if(isUpdateForm && initialData){
       setArrival(getFormattedDate(initialData.arrivalDate));
       setDeparture(getFormattedDate(initialData.departureDate));
       setMessageRequest(initialData.messageToHost || "");
       setStatusRequest(initialData.status || "Pending");
+
+      console.log("user?.id == ",user?.id);
+      console.log("initialData?.host?.id == ", initialData?.host?.id);
     }
   },[isUpdateForm, initialData])
 
@@ -46,7 +52,7 @@ export const RequestForm = ({ onSubmit, isUpdateForm = false, initialData = null
         />
       </label>
       <label>
-        Start Date:
+        End Date:
         <input
           type="date"
           value={departure}
@@ -62,7 +68,7 @@ export const RequestForm = ({ onSubmit, isUpdateForm = false, initialData = null
           required
         >{messageRequest}</textarea>
       </label>
-      {isUpdateForm === true && (
+      {(isUpdateForm === true && user?.id === initialData?.host?._id) && (
         <div>
         <label>Request status:</label>
         <div style={{display: "flex",flexDirection: "column", gap: "8px", padding: "12px", border: "1px solid #ccc", borderRadius: "5px"}}>

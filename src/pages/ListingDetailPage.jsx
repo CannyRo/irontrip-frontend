@@ -56,7 +56,8 @@ export const ListingDetailPage = () => {
       <div className="card">
         <h1>{listing.title}</h1>
         <p>
-          <strong>Address:</strong> {listing.address}, {listing.city}, {listing.country}
+          <strong>Address:</strong> {listing.address}, {listing.city},{" "}
+          {listing.country}
         </p>
         <p>
           <strong>Description:</strong> {listing.description}
@@ -64,43 +65,44 @@ export const ListingDetailPage = () => {
         <p>
           <strong>Host:</strong> {listing.host?.username || "Unknown"}
         </p>
-      <div className="image-container">
-        <img
-          src={listing.image}
-          alt={listing.title}
-          style={{ maxWidth: "100%", height: "auto" }}
-        />
-      </div>
-      <div className="availability-section">
-        <h4>Availability:</h4>
-        {listing.availability.length > 0 ? (
-          listing.availability.map((range, index) => (
-            <div key={index}>
-              <p>
-                <strong>Start Date:</strong>{" "}
-                {new Date(range.startDate).toLocaleDateString()}
-              </p>
-              <p>
-                <strong>End Date:</strong>{" "}
-                {new Date(range.endDate).toLocaleDateString()}
-              </p>
-            </div>
-          ))
-        ) : (
-          <p>No availability provided.</p>
+        <div className="image-container">
+          <img
+            src={listing.image}
+            alt={listing.title}
+            style={{ maxWidth: "100%", height: "auto" }}
+          />
         </div>
-        <div className="actions">
-          <button className="primary" onClick={handleUpdate}>
-            Update Listing
-          </button>
-          <button className="danger" onClick={handleDelete}>
-            Delete Listing
-          </button>
+        <div className="availability-section">
+          <h4>Availability:</h4>
+          {listing.availability.length > 0 ? (
+            listing.availability.map((range, index) => (
+              <div key={index}>
+                <p>
+                  <strong>Start Date:</strong>{" "}
+                  {new Date(range.startDate).toLocaleDateString()}
+                </p>
+                <p>
+                  <strong>End Date:</strong>{" "}
+                  {new Date(range.endDate).toLocaleDateString()}
+                </p>
+              </div>
+            ))
+          ) : (
+            <p>No availability provided.</p>
+          )}
+          <div className="actions">
+            <button className="primary" onClick={handleUpdate}>
+              Update Listing
+            </button>
+            <button className="danger" onClick={handleDelete}>
+              Delete Listing
+            </button>
+          </div>
         </div>
+        <Link to={`/listings/${listing._id}/request`}>
+          <button>Book dates</button>
+        </Link>
       </div>
-      <Link to={`/listings/${listing._id}/request`}>
-        <button>Book dates</button>
-      </Link>
     </div>
   );
 };

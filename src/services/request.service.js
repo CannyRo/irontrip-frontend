@@ -16,6 +16,10 @@ export const getRequestsByTraveler = (travelerId) => {
   return api.get(`/request/traveler/${travelerId}`);
 };
 
+export const getRequestsByUser = (userId) => {
+  return api.get(`/request/user/${userId}`);
+}
+
 export const getRequestById = (requestId) => {
   return api.get(`/request/${requestId}`);
 };

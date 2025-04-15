@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css"; // Ensure this file contains the footer styles
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="footer">
       <p>© 2025 IronTrip App. All rights reserved.</p>
@@ -24,5 +24,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;
