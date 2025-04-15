@@ -26,6 +26,7 @@ export const CreateListingPage = () => {
       host: user.id, // Add the host ID to the payload
     };
 
+
     console.log("Payload being sent to create listing:", payload);
 
     try {
@@ -33,7 +34,7 @@ export const CreateListingPage = () => {
       navigate("/listings"); // Redirect to the "My Listings" page after creation
     } catch (error) {
       console.error("Error creating listing:", error);
-    }
+    }  
   };
 
   if (isLoading) return <p>Loading...</p>; // Show a loading message while authentication is in progress

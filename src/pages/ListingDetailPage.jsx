@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import { getListingById, deleteListing } from "../services/listing.service";
 
@@ -56,16 +56,37 @@ export const ListingDetailPage = () => {
       <div className="card">
         <h1>{listing.title}</h1>
         <p>
-          <strong>Address:</strong> {listing.address}
+          <strong>Address:</strong> {listing.address}, {listing.city}, {listing.country}
         </p>
         <p>
           <strong>Description:</strong> {listing.description}
         </p>
         <p>
-          <strong>Host:</strong> {listing.hostEmail}
+          <strong>Host:</strong> {listing.host?.username || "Unknown"}
         </p>
-        <div className="card">
-          <h3>Availability:</h3>
+      <div className="image-container">
+        <img
+          src={listing.image}
+          alt={listing.title}
+          style={{ maxWidth: "100%", height: "auto" }}
+        />
+      </div>
+      <div className="availability-section">
+        <h4>Availability:</h4>
+        {listing.availability.length > 0 ? (
+          listing.availability.map((range, index) => (
+            <div key={index}>
+              <p>
+                <strong>Start Date:</strong>{" "}
+                {new Date(range.startDate).toLocaleDateString()}
+              </p>
+              <p>
+                <strong>End Date:</strong>{" "}
+                {new Date(range.endDate).toLocaleDateString()}
+              </p>
+            </div>
+          ))
+        ) : (
           <p>No availability provided.</p>
         </div>
         <div className="actions">
@@ -77,6 +98,9 @@ export const ListingDetailPage = () => {
           </button>
         </div>
       </div>
+      <Link to={`/listings/${listing._id}/request`}>
+        <button>Book dates</button>
+      </Link>
     </div>
   );
 };
