@@ -1,10 +1,9 @@
-import { createContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { createContext, useState } from "react";
 import {
   getAllListings,
-  createListing,
+  getListingById as fetchListingById,
   updateListing,
-  deleteListing,
+  createListing, // Import the createListing service function
 } from "../services/listing.service";
 
 const ListingContext = createContext();
@@ -14,7 +13,7 @@ const ListingContextWrapper = ({ children }) => {
   const [isLoadingListing, setIsLoadingListing] = useState(true);
   const nav = useNavigate();
   
-// Fetch all listings
+  // Fetch all listings
   const handleGetAllListings = async () => {
     setIsLoadingListing(true);
     try {
@@ -27,58 +26,58 @@ const ListingContextWrapper = ({ children }) => {
       setIsLoadingListing(false);
     }
   };
-
+  
   useEffect(()=>{
     handleGetAllListings();
   },[]);
-
   
-// Create a new listing
-  const handleCreateListing = async (listingData) => {
+  // Fetch a single listing by ID
+  const getListingById = async (id) => {
+    setIsLoadingListing(true);
     try {
-      const response = await createListing(listingData);
-      setListings((prevListings) => [...prevListings, response.data]);
-      nav('/listings')
+      const response = await fetchListingById(id); // Call the service function
+      console.log("response - getListingById (CONTEXT) : ",response);
+      return response.data; // Return the listing data
     } catch (error) {
-      console.error("Error creating listing:", error);
+      console.error("Error fetching listing by ID:", error);
+      throw error; // Re-throw the error to handle it in the component
+    } finally {
+      setIsLoadingListing(false);
     }
   };
 
   // Update an existing listing
-  const handleUpdateListing = async (listingId, listingData) => {
+  const handleUpdateListing = async (id, updatedData) => {
     try {
-      const response = await updateListing(listingId, listingData);
-      setListings((prevListings) =>
-        prevListings.map((listing) =>
-          listing._id === listingId ? response.data : listing
-        )
-      );
+      const response = await updateListing(id, updatedData);
+      console.log("response from handleUpdateListing - CONTEXT (by using updateListing() from listing.service.js) : ",response);
+      const updated = response.data.data;
+      setListings((prevListing) => prevListing.map((listingValue)=> listingValue._id === updated._id ? updated : listingValue));
+      nav('/listings');
     } catch (error) {
       console.error("Error updating listing:", error);
     }
   };
 
-  // Delete a listing
-  const handleDeleteListing = async (listingId) => {
+  // Create a new listing
+  const handleCreateListing = async (listingData) => {
     try {
-      await deleteListing(listingId);
-      setListings((prevListings) =>
-        prevListings.filter((listing) => listing._id !== listingId)
-      );
+      const response = await createListing(listingData); // Call the service function
+      setListings((prevListings) => [...prevListings, response.data]); // Update the state
     } catch (error) {
-      console.error("Error deleting listing:", error);
+      console.error("Error creating listing:", error);
     }
   };
-  
+
   return (
     <ListingContext.Provider
       value={{
+        getListingById,
         listings,
         isLoadingListing,
         handleGetAllListings,
-        handleCreateListing,
         handleUpdateListing,
-        handleDeleteListing,        
+        handleCreateListing, // Add handleCreateListing to the context
       }}
     >
       {children}

@@ -1,3 +1,103 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1E1E1E, #4A4A48); /* Dark gradient background */
+  color: #DCE7ED; /* Light blue text for readability */
+  line-height: 1.6;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #8CBAC7; /* Muted blue for links */
+}
+
+a:hover {
+  color: #DCE7ED; /* Light blue on hover */
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px; /* Fully rounded buttons */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button.primary {
+  background-color: #8CBAC7; /* Muted blue */
+  color: #1E1E1E; /* Blackish brown text for contrast */
+}
+
+button.primary:hover {
+  background-color: #DCE7ED; /* Light blue */
+  transform: scale(1.05);
+}
+
+button.danger {
+  background-color: #8A817C; /* Grayish brown */
+  color: #DCE7ED; /* Light blue text */
+}
+
+button.danger:hover {
+  background-color: #4A4A48; /* Dark gray */
+  transform: scale(1.05);
+}
+
+.create-listing-container button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px; /* Fully rounded buttons */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Submit Button */
+.create-listing-container button[type="submit"] {
+  background-color: #F4A259; /* Accent orange */
+  color: #121212; /* Dark text for contrast */
+}
+
+.create-listing-container button[type="submit"]:hover {
+  background-color: #D98E4A; /* Darker accent orange */
+  transform: scale(1.05); /* Slight zoom on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Add Availability Button */
+.add-availability-button {
+  background-color: #8CBAC7; /* Muted blue */
+  color: #121212; /* Dark text for contrast */
+}
+
+.add-availability-button:hover {
+  background-color: #DCE7ED; /* Light blue */
+  transform: scale(1.05);
+}
+
+.remove-availability-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.remove-availability-button:hover {
+  background-color: #a71d2a;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 #root {
     display: flex;
     flex-direction: column;
@@ -7,26 +107,45 @@
 main{
     flex-grow: 1;
 }
-header, footer{
-    background-color: blanchedalmond;
+header {
+  background-color: #1E1E1E; /* Blackish brown */
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem;
+
+header .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #8CBAC7; /* Muted blue for the logo */
 }
-nav{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+
+nav {
+  display: flex;
+  gap: 15px;
 }
-a{
-    display: flex;
-    min-width: max-content;
-    width: 100%;
-    text-decoration: none;
-    color: inherit;
+
+nav a {
+  font-size: 16px;
+  color: #E0E0E0;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #333333;
+}
+
+footer {
+  background-color: #1E1E1E; /* Blackish brown */
+  color: #8A817C; /* Grayish brown */
+  text-align: center;
+  padding: 20px;
+  margin-top: 60px;
+  font-size: 14px;
 }
 
 .logo {
@@ -58,7 +177,31 @@ a{
 }
 
 .card {
-  padding: 2em;
+  background-color: #4A4A48; /* Dark gray */
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  margin: 20px auto;
+  max-width: 600px;
+  color: #DCE7ED; /* Light blue text */
+}
+
+.card h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #8CBAC7; /* Muted blue for headings */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.card h2, .card h3 {
+  color: #F4A259; /* Accent color for headings */
+  margin-bottom: 15px;
+}
+
+.card p {
+  color: #8A817C; /* Grayish brown for text */
+  margin-bottom: 10px;
 }
 
 .read-the-docs {
@@ -70,20 +213,21 @@ a{
 .create-listing-container {
   max-width: 600px;
   margin: 40px auto;
-  padding: 30px;
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 40px; /* Increase padding for better spacing */
+  background: linear-gradient(135deg, #2D4A53, #1C2A2F); /* Soft gradient */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow for emphasis */
+  color: #E0E0E0; /* Light text */
 }
 
 /* Header styling */
 .create-listing-container h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #333;
-  font-size: 28px;
+  font-size: 36px; /* Larger font size */
   font-weight: bold;
+  color: #F4A259; /* Muted blue */
+  text-align: center;
+  margin-bottom: 30px; /* Add spacing below the header */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
 }
 
 /* Form layout */
@@ -98,8 +242,9 @@ a{
   display: flex;
   flex-direction: column;
   font-weight: bold;
-  color: #555;
+  color: #DCE7ED; /* Light blue for better readability */
   font-size: 16px;
+  margin-bottom: 5px; /* Add spacing below labels */
 }
 
 /* Input and textarea styling */
@@ -107,15 +252,23 @@ a{
 .create-listing-container textarea {
   padding: 12px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #333333; /* Dark border */
   border-radius: 5px;
-  width: 100%;
-  box-sizing: border-box;
+  background-color: #121212; /* Dark input background */
+  color: #E0E0E0; /* Light text */
 }
 
-.create-listing-container textarea {
-  resize: vertical;
-  min-height: 100px;
+.create-listing-container input:focus,
+.create-listing-container textarea:focus {
+  border-color: #F4A259; /* Accent color for focus */
+  outline: none;
+  box-shadow: 0 0 5px rgba(244, 162, 89, 0.5); /* Subtle glow */
+}
+
+.create-listing-container input::placeholder,
+.create-listing-container textarea::placeholder {
+  color: #888888; /* Muted placeholder color */
+  font-style: italic;
 }
 
 /* Button styling */
@@ -123,37 +276,25 @@ a{
   padding: 12px 20px;
   font-size: 16px;
   border: none;
-  border-radius: 5px;
+  border-radius: 30px; /* Fully rounded buttons */
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-/* Primary button (Create Listing) */
-.create-listing-container button[type="submit"] {
-  background-color: #007bff;
-  color: white;
-}
-
-.create-listing-container button[type="submit"]:hover {
-  background-color: #0056b3;
-  transform: scale(1.02);
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Add Availability button */
 .add-availability-button {
-  background-color: #28a745;
-  color: white;
-  padding: 10px 15px;
+  background-color: #8CBAC7; /* Muted blue */
+  color: #121212; /* Dark text for contrast */
+  padding: 12px 20px;
   font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  border-radius: 30px; /* Fully rounded button */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .add-availability-button:hover {
-  background-color: #1e7e34;
-  transform: scale(1.02);
+  background-color: #DCE7ED; /* Light blue */
+  transform: scale(1.05); /* Slight zoom on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
 /* Remove button */
@@ -195,13 +336,42 @@ a{
 /* Availability section */
 .availability-section {
   margin-top: 20px;
+  padding: 20px;
+  background-color: #2D4A53; /* Muted teal background */
+  border-radius: 10px;
+  border: 1px solid #8CBAC7; /* Muted blue border */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .availability-section h4 {
   margin-bottom: 15px;
-  color: #333;
+  color: #8CBAC7; /* Muted blue */
   font-size: 18px;
   font-weight: bold;
+  text-align: center;
+}
+
+/* Availability section label styling */
+.availability-section label {
+  font-weight: bold;
+  color: #DCE7ED; /* Light blue for better contrast */
+  font-size: 16px;
+  margin-bottom: 5px; /* Add spacing below labels */
+}
+
+.availability-section input {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #333333; /* Dark border */
+  border-radius: 5px;
+  background-color: #121212; /* Dark input background */
+  color: #E0E0E0; /* Light text */
+}
+
+.availability-section input:focus {
+  border-color: #F4A259; /* Accent color for focus */
+  outline: none;
+  box-shadow: 0 0 8px rgba(244, 162, 89, 0.5); /* Subtle glow */
 }
 
 /* Availability range layout */
@@ -223,6 +393,15 @@ a{
   .availability-range button {
     align-self: flex-end;
   }
+
+  .create-listing-container {
+    padding: 20px;
+  }
+
+  .add-availability-button,
+  .create-listing-container button[type="submit"] {
+    width: 100%; /* Full-width buttons on smaller screens */
+  }
 }
 
 /* Listings Page Container */
@@ -230,7 +409,19 @@ a{
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  font-family: Arial, sans-serif;
+  text-align: center;
+  background: linear-gradient(135deg, #1E1E1E, #4A4A48); /* Dark gradient background */
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Listings Header */
+.listings-header {
+  font-size: 36px; /* Larger font size */
+  font-weight: bold;
+  color: #8CBAC7; /* Muted blue */
+  margin-bottom: 40px; /* Add spacing below the title */
+  text-align: center;
 }
 
 /* Listings Grid */
@@ -242,40 +433,94 @@ a{
 
 /* Listing Card */
 .listing-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 15px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #4A4A48, #1E1E1E); /* Gradient for cards */
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
+  text-align: left; /* Align content to the left */
 }
 
-.listing-card h3 {
-  margin: 0 0 10px;
+.listing-card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+/* Listing Content */
+.listing-content {
+  padding: 20px;
+  text-align: left;
+}
+
+.listing-content h3 {
   font-size: 20px;
+  color: #8CBAC7; /* Muted blue */
+  margin-bottom: 10px;
 }
 
-.listing-card p {
-  margin: 0 0 15px;
-  color: #555;
+.listing-content p {
+  font-size: 14px;
+  color: #8A817C; /* Grayish brown */
+  margin-bottom: 20px;
 }
 
 /* Listing Actions */
 .listing-actions {
   display: flex;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 10px; /* Add spacing between buttons */
 }
 
 .listing-actions button {
-  background-color: #007bff;
-  color: white;
+  flex: 1; /* Equal button width */
   padding: 10px 15px;
   font-size: 14px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  border-radius: 30px; /* Rounded buttons */
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.listing-actions button:hover {
-  background-color: #0056b3;
+button.primary {
+  background-color: #F4A259; /* Accent color */
+  color: #121212; /* Dark text for contrast */
+}
+
+button.primary:hover {
+  background-color: #D98E4A; /* Darker accent color */
+}
+
+button.secondary {
+  background-color: #2D4A53; /* Muted teal */
+  color: #FFFFFF; /* White text */
+}
+
+button.secondary:hover {
+  background-color: #1C2A2F; /* Darker teal */
+}
+
+/* Form styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: bold;
+  color: #E0E0E0;
+}
+
+input, textarea, select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #333333;
+  border-radius: 5px;
+  background-color: #121212;
+  color: #E0E0E0;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #F4A259; /* Accent color for focus */
+  outline: none;
+  box-shadow: 0 0 5px rgba(244, 162, 89, 0.5);
 }
