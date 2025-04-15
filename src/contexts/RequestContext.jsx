@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import {
   createRequest,
@@ -6,14 +6,35 @@ import {
   getRequestsByTraveler,
   updateRequest,
   deleteRequest,
+  getAllRequests,
 } from "../services/request.service";
 
 const RequestContext = createContext();
 
 const RequestContextWrapper = ({ children }) => {
   const [requests, setRequests] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingReq, setIsLoadingReq] = useState(true);
   const nav = useNavigate();
+
+  // Get all request
+  const fetchAllRequest = async () => {
+    setIsLoadingReq(true);
+    try {
+      const res = await getAllRequests();
+      console.log("res from fetchAllRequest ", res);
+      setRequests(res.data.data);
+    } catch (error) {
+      console.log(error);
+      setRequests([]);
+    } finally {
+      setIsLoadingReq(false);
+    }
+  }
+
+  useEffect(()=>{
+    fetchAllRequest();
+    // console.log('//== requests ==// ', requests);
+  },[]);
 
   // Create a new Request
   const handleCreateRequest = async (requestData) => {
@@ -24,13 +45,13 @@ const RequestContextWrapper = ({ children }) => {
     } catch (error) {
       console.log(error);
       setRequests([]);
-      setIsLoading(false);
+      setIsLoadingReq(false);
     }
   };
 
   // Get all the requests as host
   const fetchRequestsAsHost = async (hostId) => {
-    setIsLoading(true);
+    setIsLoadingReq(true);
     try {
       const res = await getRequestsByHost(hostId);
       setRequests(res.data.data);
@@ -38,20 +59,20 @@ const RequestContextWrapper = ({ children }) => {
       console.log(error);
       setRequests([]);
     } finally {
-      setIsLoading(false);
+      setIsLoadingReq(false);
     }
   };
 
   // Get all the requests as host traveler
   const fetchRequestsAsTraveler = async (travelerId) => {
-    setIsLoading(true);
+    setIsLoadingReq(true);
     try {
       const res = await getRequestsByTraveler(travelerId);
       setRequests(res.data.data);
     } catch (error) {
       console.log(error);
     } finally {
-      setIsLoading(false);
+      setIsLoadingReq(false);
     }
   };
 
@@ -89,7 +110,7 @@ const RequestContextWrapper = ({ children }) => {
       value={{
         requests,
         setRequests,
-        isLoading,
+        isLoadingReq,
         handleCreateRequest,
         fetchRequestsAsHost,
         fetchRequestsAsTraveler,

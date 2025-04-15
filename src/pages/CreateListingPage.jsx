@@ -30,7 +30,7 @@ export const CreateListingPage = () => {
 
     handleCreateListing({
       ...listingData,
-      host: user.id,
+      host: user.id
     });
   };
 

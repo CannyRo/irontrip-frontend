@@ -5,10 +5,10 @@ import { Link } from "react-router";
 export const Navbar = () => {
   const { isLoggedIn, user, userDetail, handleLougoutuser } = useContext(AuthContext);
 
-  useEffect(() => {
-    console.log("user details from CONTEXT ==> ",userDetail);
-    console.log("user ==> ", user);
-  }, [user, userDetail]);
+  // useEffect(() => {
+  //   console.log("user details from CONTEXT ==> ",userDetail);
+  //   console.log("user ==> ", user);
+  // }, [user, userDetail]);
   
   return (
     <nav>

@@ -11,21 +11,29 @@ const ListingContext = createContext();
 
 const ListingContextWrapper = ({ children }) => {
   const [listings, setListings] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingListing, setIsLoadingListing] = useState(true);
   const nav = useNavigate();
   
-
-  const getAllListings = async () => {
-    // Replace with your API call
-    const response = await fetch("/api/listings");
-    const data = await response.json();
-    setListings(data);
-    return data;
+// Fetch all listings
+  const handleGetAllListings = async () => {
+    setIsLoadingListing(true);
+    try {
+      const response = await getAllListings();
+      setListings(response.data.data);
+    } catch(error){
+      console.error("Error fetching listings:", error);
+      setListings([]);
+    } finally {
+      setIsLoadingListing(false);
+    }
   };
+
+  useEffect(()=>{
+    handleGetAllListings();
+  },[]);
 
   
 // Create a new listing
-
   const handleCreateListing = async (listingData) => {
     try {
       const response = await createListing(listingData);
@@ -66,8 +74,8 @@ const ListingContextWrapper = ({ children }) => {
     <ListingContext.Provider
       value={{
         listings,
-        isLoading,
-        getAllListings,
+        isLoadingListing,
+        handleGetAllListings,
         handleCreateListing,
         handleUpdateListing,
         handleDeleteListing,        
