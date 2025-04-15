@@ -6,7 +6,7 @@ import { RequestContext } from "../contexts/RequestContext";
 import { RequestForm } from "../components/RequestForm";
 
 export const EditRequestPage = () => {
-  const { handleUpdateRequest, isLoadingReq, requests } =
+  const { handleUpdateRequest, handleDeleteRequest, isLoadingReq, requests } =
     useContext(RequestContext);
   const { user, isLoggedIn, isLoading } = useContext(AuthContext);
   // const { isLoadingListing, listings } = useContext(ListingContext);
@@ -35,6 +35,10 @@ export const EditRequestPage = () => {
     handleUpdateRequest(requestId, requestData);
   };
 
+  const handleDelete = () => {
+    handleDeleteRequest(requestId);
+  }
+
   if (isLoading) return <p>Authentification is loading...</p>;
   if (isLoadingListing) return <p>Listing detail is loading...</p>;
   if (isLoadingReq || !requestToEdit) return <p>Request is loading...</p>;
@@ -47,6 +51,7 @@ export const EditRequestPage = () => {
           isUpdateForm={true}
           initialData={requestToEdit}
           onSubmit={handleSubmit}
+          onDelete={handleDelete}
         />
         <hr />
         <h4>{requestToEdit.listing.title}</h4>

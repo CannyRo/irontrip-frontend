@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 
-export const RequestForm = ({ onSubmit, isUpdateForm = false, initialData = null }) => {
+export const RequestForm = ({ onSubmit, onDelete, isUpdateForm = false, initialData = null }) => {
   console.log("isUpdateForm === ",isUpdateForm);
 
   const getFormattedDate = (date) => new Date(date).toISOString().split("T")[0];
@@ -39,6 +39,10 @@ export const RequestForm = ({ onSubmit, isUpdateForm = false, initialData = null
     };
     onSubmit(formattedData);
   };
+
+  const handleDelete = () => {
+    onDelete();
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -110,6 +114,7 @@ export const RequestForm = ({ onSubmit, isUpdateForm = false, initialData = null
       )}
       
       <button type="submit">{isUpdateForm ? "Update" : "Submit"}</button>
+      {(isUpdateForm === true && user?.id === initialData?.traveler?._id) && <button type="button" onClick={handleDelete}>Delete</button>}
     </form>
   );
 };
