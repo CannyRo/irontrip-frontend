@@ -4,6 +4,10 @@ export const createRequest = (requestData) => {
   return api.post("/request/create", requestData);
 };
 
+export const getAllRequests = () => {
+  return api.get("/request");
+}
+
 export const getRequestsByHost = (hostId) => {
   return api.get(`/request/host/${hostId}`);
 };
