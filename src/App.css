@@ -33,12 +33,13 @@ button {
 
 button.primary {
   background-color: #8CBAC7; /* Muted blue */
-  color: #1E1E1E; /* Blackish brown text for contrast */
+  color: #121212; /* Dark text for contrast */
 }
 
 button.primary:hover {
-  background-color: #DCE7ED; /* Light blue */
-  transform: scale(1.05);
+  background-color: #DCE7ED; /* Light blue on hover */
+  transform: scale(1.05); /* Slight zoom on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
 button.danger {
@@ -62,12 +63,12 @@ button.danger:hover {
 
 /* Submit Button */
 .create-listing-container button[type="submit"] {
-  background-color: #F4A259; /* Accent orange */
+  background-color: #8CBAC7; /* Muted blue */
   color: #121212; /* Dark text for contrast */
 }
 
 .create-listing-container button[type="submit"]:hover {
-  background-color: #D98E4A; /* Darker accent orange */
+  background-color: #DCE7ED; /* Light blue on hover */
   transform: scale(1.05); /* Slight zoom on hover */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
@@ -177,13 +178,11 @@ footer {
 }
 
 .card {
-  background-color: #4A4A48; /* Dark gray */
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  margin: 20px auto;
-  max-width: 600px;
-  color: #DCE7ED; /* Light blue text */
+  border-radius: 15px; /* Keep rounded corners */
+  padding: 30px; /* Maintain spacing */
+  margin: 20px auto; /* Center the card and add spacing */
+  max-width: 600px; /* Limit the card width */
+  color: #DCE7ED; /* Light blue text for readability */
 }
 
 .card h1 {
@@ -195,13 +194,50 @@ footer {
 }
 
 .card h2, .card h3 {
-  color: #F4A259; /* Accent color for headings */
+  color: #8CBAC7; /* Muted blue for headings */
   margin-bottom: 15px;
 }
 
 .card p {
   color: #8A817C; /* Grayish brown for text */
   margin-bottom: 10px;
+}
+
+.card .action-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px; /* Add spacing between buttons */
+  margin-top: 20px; /* Add spacing above the buttons */
+}
+
+.card .action-buttons button {
+  flex: 1; /* Equal button width */
+  padding: 12px 20px; /* Increase padding for better usability */
+  font-size: 16px;
+  border-radius: 30px; /* Fully rounded buttons */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button.primary {
+  background-color: #8CBAC7; /* Muted blue */
+  color: #121212; /* Dark text for contrast */
+}
+
+button.primary:hover {
+  background-color: #DCE7ED; /* Light blue on hover */
+  transform: scale(1.05); /* Slight zoom on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+button.danger {
+  background-color: #8A817C; /* Grayish brown */
+  color: #DCE7ED; /* Light blue text */
+}
+
+button.danger:hover {
+  background-color: #4A4A48; /* Dark gray */
+  transform: scale(1.05);
 }
 
 .read-the-docs {
@@ -213,18 +249,18 @@ footer {
 .create-listing-container {
   max-width: 600px;
   margin: 40px auto;
-  padding: 40px; /* Increase padding for better spacing */
-  background: linear-gradient(135deg, #2D4A53, #1C2A2F); /* Soft gradient */
+  padding: 30px;
+  background: linear-gradient(135deg, #4A4A48, #1E1E1E); /* Dark gradient background */
   border-radius: 15px; /* Rounded corners */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow for emphasis */
-  color: #E0E0E0; /* Light text */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  color: #DCE7ED; /* Light blue text */
 }
 
 /* Header styling */
 .create-listing-container h2 {
   font-size: 36px; /* Larger font size */
   font-weight: bold;
-  color: #F4A259; /* Muted blue */
+  color: #8CBAC7; /* Muted blue */
   text-align: center;
   margin-bottom: 30px; /* Add spacing below the header */
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
@@ -260,9 +296,9 @@ footer {
 
 .create-listing-container input:focus,
 .create-listing-container textarea:focus {
-  border-color: #F4A259; /* Accent color for focus */
+  border-color: #8CBAC7; /* Muted blue for focus */
   outline: none;
-  box-shadow: 0 0 5px rgba(244, 162, 89, 0.5); /* Subtle glow */
+  box-shadow: 0 0 5px rgba(140, 186, 199, 0.5); /* Subtle glow */
 }
 
 .create-listing-container input::placeholder,
@@ -336,19 +372,19 @@ footer {
 /* Availability section */
 .availability-section {
   margin-top: 20px;
-  padding: 20px;
+  padding: 25px; /* Increase padding for better spacing */
   background-color: #2D4A53; /* Muted teal background */
-  border-radius: 10px;
+  border-radius: 10px; /* Rounded corners */
   border: 1px solid #8CBAC7; /* Muted blue border */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .availability-section h4 {
-  margin-bottom: 15px;
+  margin-bottom: 15px; /* Add spacing below the heading */
   color: #8CBAC7; /* Muted blue */
-  font-size: 18px;
+  font-size: 20px; /* Slightly larger font size */
   font-weight: bold;
-  text-align: center;
+  text-align: center; /* Center-align the heading */
 }
 
 /* Availability section label styling */
@@ -369,9 +405,9 @@ footer {
 }
 
 .availability-section input:focus {
-  border-color: #F4A259; /* Accent color for focus */
+  border-color: #8CBAC7; /* Muted blue for focus */
   outline: none;
-  box-shadow: 0 0 8px rgba(244, 162, 89, 0.5); /* Subtle glow */
+  box-shadow: 0 0 8px rgba(140, 186, 199, 0.5); /* Subtle glow */
 }
 
 /* Availability range layout */
@@ -410,9 +446,8 @@ footer {
   margin: 0 auto;
   padding: 20px;
   text-align: center;
-  background: linear-gradient(135deg, #1E1E1E, #4A4A48); /* Dark gradient background */
   border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  
 }
 
 /* Listings Header */
@@ -456,71 +491,73 @@ footer {
 .listing-content h3 {
   font-size: 20px;
   color: #8CBAC7; /* Muted blue */
-  margin-bottom: 10px;
+} margin-bottom: 10px;
 }
-
 .listing-content p {
-  font-size: 14px;
+  font-size: 14px; {
   color: #8A817C; /* Grayish brown */
-  margin-bottom: 20px;
+  margin-bottom: 20px;rayish brown */
+} margin-bottom: 20px;
 }
-
 /* Listing Actions */
-.listing-actions {
-  display: flex;
+.listing-actions { */
+  display: flex; {
   justify-content: space-between;
   gap: 10px; /* Add spacing between buttons */
+} gap: 10px; /* Add spacing between buttons */
 }
-
 .listing-actions button {
   flex: 1; /* Equal button width */
-  padding: 10px 15px;
-  font-size: 14px;
+  padding: 10px 15px;utton width */
+  font-size: 14px;px;
   border-radius: 30px; /* Rounded buttons */
   transition: background-color 0.3s ease, transform 0.2s ease;
+} transition: background-color 0.3s ease, transform 0.2s ease;
 }
-
 button.primary {
-  background-color: #F4A259; /* Accent color */
+  background-color: #8CBAC7; /* Muted blue */
   color: #121212; /* Dark text for contrast */
+} color: #121212; /* Dark text for contrast */
 }
-
 button.primary:hover {
-  background-color: #D98E4A; /* Darker accent color */
-}
-
-button.secondary {
+  background-color: #DCE7ED; /* Light blue on hover */
+} background-color: #DCE7ED; /* Light blue on hover */
+  transform: scale(1.05); /* Slight zoom on hover */
+button.secondary {x 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
   background-color: #2D4A53; /* Muted teal */
   color: #FFFFFF; /* White text */
-}
-
-button.secondary:hover {
+}utton.secondary {
+  background-color: #2D4A53; /* Muted teal */
+button.secondary:hover {te text */
   background-color: #1C2A2F; /* Darker teal */
 }
-
-/* Form styling */
+button.secondary:hover {
+/* Form styling */: #1C2A2F; /* Darker teal */
 form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-}
-
-label {
+} display: flex;
+  flex-direction: column;
+label {15px;
   font-weight: bold;
   color: #E0E0E0;
-}
-
+}abel {
+  font-weight: bold;
 input, textarea, select {
   padding: 10px;
   font-size: 16px;
   border: 1px solid #333333;
   border-radius: 5px;
   background-color: #121212;
-  color: #E0E0E0;
-}
-
+  color: #E0E0E0;id #333333;
+} border-radius: 5px;
+  background-color: #121212;
 input:focus, textarea:focus, select:focus {
-  border-color: #F4A259; /* Accent color for focus */
+  border-color: #8CBAC7; /* Muted blue for focus */
+  outline: none;
+  box-shadow: 0 0 5px rgba(140, 186, 199, 0.5); /* Subtle glow */
+} border-color: #F4A259; /* Accent color for focus */
   outline: none;
   box-shadow: 0 0 5px rgba(244, 162, 89, 0.5);
 }
