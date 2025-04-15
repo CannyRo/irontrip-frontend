@@ -19,7 +19,7 @@ export const EditListingPage = () => {
     const fetchListing = async () => {
       try {
         const listing = await getListingById(listingId); // Fetch the listing by ID
-        console.log("Fetched listing:", listing); // Debug the fetched listing
+        console.log("Fetched listing:", listing); // Debugging
         setInitialValues(listing); // Set the listing data
       } catch (error) {
         console.error("Error fetching listing:", error);
@@ -41,10 +41,20 @@ export const EditListingPage = () => {
   if (!listingId) return <p>Invalid listing ID.</p>;
   if (!initialValues) return <p>Loading...</p>;
 
+  const defaultValues = {
+    title: "",
+    address: "",
+    city: "",
+    country: "",
+    description: "",
+    image: "",
+    ...initialValues, // Override defaults with fetched values
+  };
+
   return (
     <div className="edit-listing-container">
       <h2>Edit Listing</h2>
-      <ListingForm initialValues={initialValues} onSubmit={handleSubmit} />
+      <ListingForm initialValues={defaultValues} onSubmit={handleSubmit} />
     </div>
   );
 };

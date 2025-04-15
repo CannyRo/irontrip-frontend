@@ -69,7 +69,7 @@ export const ListingDetailPage = () => {
           <img
             src={listing.image}
             alt={listing.title}
-            style={{ maxWidth: "100%", height: "auto" }}
+            style={{ maxWidth: "100%", height: "auto", borderRadius: "10px" }}
           />
         </div>
         <div className="availability-section">
@@ -100,7 +100,7 @@ export const ListingDetailPage = () => {
           </div>
         </div>
         <Link to={`/listings/${listing._id}/request`}>
-          <button>Book dates</button>
+          <button className="book-dates-button">Book Dates</button>
         </Link>
       </div>
     </div>

@@ -372,51 +372,45 @@ button.danger:hover {
 /* Availability section */
 .availability-section {
   margin-top: 20px;
-  padding: 25px; /* Increase padding for better spacing */
-  background-color: #2D4A53; /* Muted teal background */
-  border-radius: 10px; /* Rounded corners */
-  border: 1px solid #8CBAC7; /* Muted blue border */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 20px; /* Match padding with other fields */
+  background-color: transparent; /* Remove blue background */
+  border: none; /* Remove border */
+  box-shadow: none; /* Remove shadow */
 }
 
 .availability-section h4 {
-  margin-bottom: 15px; /* Add spacing below the heading */
-  color: #8CBAC7; /* Muted blue */
-  font-size: 20px; /* Slightly larger font size */
+  margin-bottom: 15px;
+  color: #DCE7ED; /* Light blue for consistency */
+  font-size: 16px; /* Match label font size */
   font-weight: bold;
-  text-align: center; /* Center-align the heading */
+  text-align: left; /* Align heading with other fields */
 }
 
-/* Availability section label styling */
-.availability-section label {
-  font-weight: bold;
-  color: #DCE7ED; /* Light blue for better contrast */
-  font-size: 16px;
-  margin-bottom: 5px; /* Add spacing below labels */
-}
-
-.availability-section input {
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #333333; /* Dark border */
-  border-radius: 5px;
-  background-color: #121212; /* Dark input background */
-  color: #E0E0E0; /* Light text */
-}
-
-.availability-section input:focus {
-  border-color: #8CBAC7; /* Muted blue for focus */
-  outline: none;
-  box-shadow: 0 0 8px rgba(140, 186, 199, 0.5); /* Subtle glow */
-}
-
-/* Availability range layout */
+/* Availability Range Inputs */
 .availability-range {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 15px;
+  gap: 15px; /* Add spacing between inputs */
+}
+
+.availability-range label {
+  font-weight: bold;
+  color: #DCE7ED; /* Light blue for labels */
+  font-size: 16px;
+}
+
+.availability-range input {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #333333; /* Match other input borders */
+  border-radius: 5px;
+  background-color: #121212; /* Match other input backgrounds */
+  color: #E0E0E0; /* Match other input text color */
+}
+
+.availability-range input:focus {
+  border-color: #8CBAC7; /* Muted blue for focus */
+  outline: none;
+  box-shadow: 0 0 5px rgba(140, 186, 199, 0.5); /* Subtle glow */
 }
 
 /* Responsive Design */
@@ -437,6 +431,19 @@ button.danger:hover {
   .add-availability-button,
   .create-listing-container button[type="submit"] {
     width: 100%; /* Full-width buttons on smaller screens */
+  }
+
+  .actions {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px;
+  }
+
+  .actions button {
+    width: 100%; /* Full-width buttons */
+  }
+
+  .book-dates-button {
+    width: 100%; /* Full-width button */
   }
 }
 
@@ -491,73 +498,188 @@ button.danger:hover {
 .listing-content h3 {
   font-size: 20px;
   color: #8CBAC7; /* Muted blue */
-} margin-bottom: 10px;
+  margin-bottom: 10px;
 }
+
 .listing-content p {
-  font-size: 14px; {
+  font-size: 14px;
   color: #8A817C; /* Grayish brown */
-  margin-bottom: 20px;rayish brown */
-} margin-bottom: 20px;
+  margin-bottom: 20px;
 }
+
 /* Listing Actions */
-.listing-actions { */
-  display: flex; {
+.listing-actions {
+  display: flex;
   justify-content: space-between;
   gap: 10px; /* Add spacing between buttons */
-} gap: 10px; /* Add spacing between buttons */
 }
+
 .listing-actions button {
   flex: 1; /* Equal button width */
-  padding: 10px 15px;utton width */
-  font-size: 14px;px;
+  padding: 10px 15px;
+  font-size: 14px;
   border-radius: 30px; /* Rounded buttons */
   transition: background-color 0.3s ease, transform 0.2s ease;
-} transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
 button.primary {
   background-color: #8CBAC7; /* Muted blue */
   color: #121212; /* Dark text for contrast */
-} color: #121212; /* Dark text for contrast */
 }
+
 button.primary:hover {
   background-color: #DCE7ED; /* Light blue on hover */
-} background-color: #DCE7ED; /* Light blue on hover */
   transform: scale(1.05); /* Slight zoom on hover */
-button.secondary {x 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+button.secondary {
   background-color: #2D4A53; /* Muted teal */
   color: #FFFFFF; /* White text */
-}utton.secondary {
-  background-color: #2D4A53; /* Muted teal */
-button.secondary:hover {te text */
+}
+
+button.secondary:hover {
   background-color: #1C2A2F; /* Darker teal */
 }
-button.secondary:hover {
-/* Form styling */: #1C2A2F; /* Darker teal */
+
+/* Form styling */
 form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-} display: flex;
-  flex-direction: column;
-label {15px;
+}
+
+label {
   font-weight: bold;
   color: #E0E0E0;
-}abel {
-  font-weight: bold;
+}
+
 input, textarea, select {
   padding: 10px;
   font-size: 16px;
   border: 1px solid #333333;
   border-radius: 5px;
   background-color: #121212;
-  color: #E0E0E0;id #333333;
-} border-radius: 5px;
-  background-color: #121212;
+  color: #E0E0E0;
+}
+
 input:focus, textarea:focus, select:focus {
   border-color: #8CBAC7; /* Muted blue for focus */
   outline: none;
   box-shadow: 0 0 5px rgba(140, 186, 199, 0.5); /* Subtle glow */
-} border-color: #F4A259; /* Accent color for focus */
+}
+
+/* Actions Section */
+.actions {
+  display: flex;
+  justify-content: space-between; /* Space out buttons evenly */
+  gap: 15px; /* Add consistent spacing between buttons */
+  margin-top: 20px; /* Add spacing above the buttons */
+}
+
+/* Book Dates Button */
+.book-dates-button {
+  display: block;
+  margin: 20px auto 0; /* Center the button */
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 30px;
+  background-color: #8CBAC7; /* Muted blue */
+  color: #121212; /* Dark text */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.book-dates-button:hover {
+  background-color: #DCE7ED; /* Light blue */
+}
+
+/* Image Container */
+.image-container {
+  text-align: center; /* Center the image */
+  margin: 20px 0; /* Add spacing above and below the image */
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px; /* Add rounded corners for consistency */
+}
+
+/* Edit Listing Container */
+.edit-listing-container {
+  max-width: 800px;
+  margin: 0 auto; /* Center the form */
+  padding: 20px;
+  background: linear-gradient(135deg, #4A4A48, #1E1E1E); /* Match the app's gradient */
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.edit-listing-container h2 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #8CBAC7; /* Muted blue */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Add spacing between fields */
+}
+
+form label {
+  font-weight: bold;
+  color: #DCE7ED; /* Light blue for labels */
+}
+
+form input,
+form textarea {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #333333; /* Match input borders */
+  border-radius: 5px;
+  background-color: #121212; /* Match input background */
+  color: #E0E0E0; /* Match input text color */
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #8CBAC7; /* Muted blue for focus */
   outline: none;
-  box-shadow: 0 0 5px rgba(244, 162, 89, 0.5);
+  box-shadow: 0 0 5px rgba(140, 186, 199, 0.5); /* Subtle glow */
+}
+
+form .actions {
+  display: flex;
+  justify-content: space-between; /* Space out buttons */
+  gap: 15px;
+}
+
+form .actions button {
+  flex: 1; /* Equal button width */
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form .actions button.primary {
+  background-color: #8CBAC7; /* Muted blue */
+  color: #121212; /* Dark text */
+}
+
+form .actions button.primary:hover {
+  background-color: #DCE7ED; /* Light blue */
+}
+
+form .actions button.danger {
+  background-color: #8A817C; /* Grayish brown */
+  color: #DCE7ED; /* Light blue text */
+}
+
+form .actions button.danger:hover {
+  background-color: #4A4A48; /* Dark gray */
 }
