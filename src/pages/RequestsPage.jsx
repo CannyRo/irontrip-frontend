@@ -27,7 +27,7 @@ export const RequestsPage = () => {
     }
     fetchRequests();
     }
-    // console.log("myData ",myRequests);
+    console.log("myData ",myRequests);
   }, [user?.id, user, isLoading, isLoggedIn, nav]);
 
   const getFormattedDate = (isoDate) => new Date(isoDate).toISOString().split("T")[0];
@@ -38,13 +38,23 @@ export const RequestsPage = () => {
     console.log("check myRequests = ", myRequests);
     return <p>Request is loading...</p>;
   } 
+  if (myRequests.length === 0) {
+    return (
+      <main>
+        <div className="listings-page-container">
+          <h2>My Request</h2>
+          <p>No requests found.</p>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main>
       <div className="listings-page-container">
         <h2>My Request</h2>
         <div className="listings-grid">
-          {myRequests && myRequests.map((req) => (
+          {(myRequests && myRequests.length>0) && myRequests.map((req) => (
             <div key={req._id} className="listing-card">
               <label>
                 Start Date:
@@ -62,14 +72,14 @@ export const RequestsPage = () => {
                   readOnly
                 />
               </label>
-              <h3>{req.listing.title}</h3>
-              <p><strong>Host: </strong>{req.host.username}</p>
-              <p><strong>Traveler: </strong>{req.traveler.username}</p>
+              <h3>{req?.listing?.title}</h3>
+              <p><strong>Host: </strong>{req?.host?.username}</p>
+              <p><strong>Traveler: </strong>{req?.traveler?.username}</p>
               <div className="listing-actions">
-                <Link to={`/listing/${req.listing._id}`}>
+                <Link to={`/listing/${req?.listing?._id}`}>
                   <button>Back to the listing details</button>
                 </Link>
-                <Link to={`/edit-request/${req._id}`}>
+                <Link to={`/edit-request/${req?._id}`}>
                   <button>Edit Request</button>
                 </Link>
               </div>
