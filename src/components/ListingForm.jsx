@@ -11,6 +11,7 @@ export const ListingForm = ({
     image: "", // Default value for the image URL
   },
   onSubmit,
+  host,
 }) => {
   const [title, setTitle] = useState(initialValues.title);
   const [address, setAddress] = useState(initialValues.address);
@@ -19,6 +20,7 @@ export const ListingForm = ({
   const [description, setDescription] = useState(initialValues.description);
   const [availability, setAvailability] = useState(initialValues.availability || []); // Default to an empty array
   const [image, setImage] = useState(initialValues.image); // Use a text input for the image URL
+  const [imageFile, setImageFile] = useState(null);
 
   const addAvailability = () => {
     setAvailability([...availability, { startDate: "", endDate: "" }]);
@@ -37,15 +39,31 @@ export const ListingForm = ({
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit({
-      title,
-      address,
-      city,
-      country,
-      description,
-      availability,
-      image, // Pass the image URL
-    });
+    
+    let formData;
+    if (imageFile) {
+      formData = new FormData();
+      formData.append("listingPicture", imageFile);
+      formData.append("title", title);
+      formData.append("address",address);
+      formData.append("city", city);
+      formData.append("country", country);
+      formData.append("description", description);
+      formData.append("availability", JSON.stringify(availability));      
+      formData.append("host", host);
+    } else {
+      formData = {
+        title,
+        address,
+        city,
+        country,
+        description,
+        availability,
+        host,
+        listingPicture: image || "", // Use the image URL if no file is uploaded
+          };
+    }
+    onSubmit(formData)    
   };
 
   return (
@@ -103,6 +121,16 @@ export const ListingForm = ({
           placeholder="Enter the image URL"
         />
       </label>
+
+      <label>
+        Or upload profile image:
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setImageFile(e.target.files[0])}
+        />
+      </label>
+
       <div className="availability-section">
         <h4>Availability:</h4>
         {availability && availability.length > 0 ? (
