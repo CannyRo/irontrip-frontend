@@ -9,6 +9,7 @@ export const EditListingPage = () => {
   const { getListingById, handleUpdateListing } = useContext(ListingContext);
 
   const [initialValues, setInitialValues] = useState(null);
+  const [listingToEdit, setListingToEdit] = useState(null);
 
   useEffect(() => {
     if (!listingId) {
@@ -21,6 +22,7 @@ export const EditListingPage = () => {
         const listing = await getListingById(listingId); // Fetch the listing by ID
         console.log("Fetched listing:", listing); // Debugging
         setInitialValues(listing); // Set the listing data
+        setListingToEdit(listing.data); // Set the listing data
       } catch (error) {
         console.error("Error fetching listing:", error);
       }
@@ -39,22 +41,22 @@ export const EditListingPage = () => {
   };
 
   if (!listingId) return <p>Invalid listing ID.</p>;
-  if (!initialValues) return <p>Loading...</p>;
+  if (!initialValues || !listingToEdit) return <p>Loading...</p>;
 
-  const defaultValues = {
-    title: "",
-    address: "",
-    city: "",
-    country: "",
-    description: "",
-    image: "",
-    ...initialValues, // Override defaults with fetched values
-  };
+  // const defaultValues = {
+  //   title: "",
+  //   address: "",
+  //   city: "",
+  //   country: "",
+  //   description: "",
+  //   image: "",
+  //   ...initialValues, // Override defaults with fetched values
+  // };
 
   return (
     <div className="edit-listing-container">
       <h2>Edit Listing</h2>
-      <ListingForm initialValues={defaultValues} onSubmit={handleSubmit} />
+      <ListingForm initialValues={listingToEdit} onSubmit={handleSubmit} isUpdateForm={true}/>
     </div>
   );
 };
