@@ -1,6 +1,7 @@
 import { Link, useParams, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import { getListingById, deleteListing } from "../services/listing.service";
+import { Map } from "../components/Map";
 
 export const ListingDetailPage = () => {
   const { listingId } = useParams();
@@ -102,6 +103,14 @@ export const ListingDetailPage = () => {
         <Link to={`/listings/${listing._id}/request`}>
           <button className="book-dates-button">Book Dates</button>
         </Link>
+        <h4>Location : </h4>
+        {listing.location?.lat && listing.location?.lng && (
+        <Map
+          lat={listing.location.lat}
+          lng={listing.location.lng}
+          title={`${listing.title}, ${listing.city.toUpperCase()}, ${listing.country.toUpperCase()}`}
+        />
+      )}
       </div>
     </div>
   );
