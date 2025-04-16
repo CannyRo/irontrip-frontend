@@ -17,6 +17,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { ListingsPage } from "./pages/ListingsPage";
 import { RequestsPage } from "./pages/RequestsPage";
+import { AboutPage } from "./pages/AboutPage";
 
 function App() {
  
@@ -37,6 +38,7 @@ function App() {
         <Route path="/listings/:listingId/request" element={<CreateRequestPage />} />
         <Route path="/edit-request/:requestId" element={<EditRequestPage />} />
         <Route path="/listings" element={<ListingsPage />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
