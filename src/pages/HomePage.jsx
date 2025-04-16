@@ -10,9 +10,9 @@ export const HomePage = () => {
   const [ searchTerm, setSearchTerm] = useState("");
   useEffect(()=>{
     // handleGetAllListings();
-    console.log("### listings ###");
-    console.log(listings);
-    console.log("### END listings ###");
+    // console.log("### listings ###");
+    // console.log(listings);
+    // console.log("### END listings ###");
     const filteredData = listings.filter(listing => {
       if(
         ( listing.title && listing.title.toLowerCase().includes( searchTerm.toLowerCase() ) ) ||
