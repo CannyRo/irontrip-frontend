@@ -55,15 +55,15 @@ export const EditRequestPage = () => {
         />
         <hr />
         {requestToEdit.listing && (<>
-        <h4>{requestToEdit.listing.title}</h4>
+        <h4>{requestToEdit?.listing?.title}</h4>
         <p>
-          <strong>Address:</strong> {requestToEdit.listing.address},{" "}
-          {requestToEdit.listing.city}, {requestToEdit.listing.country}
+          <strong>Address:</strong> {requestToEdit?.listing?.address},{" "}
+          {requestToEdit?.listing?.city}, {requestToEdit?.listing?.country}
         </p>
         <p>
-          <strong>Host:</strong> {requestToEdit.host?.username || "Unknown"}
+          <strong>Host:</strong> {requestToEdit?.host?.username || "Unknown"}
         </p>
-        <Link to={`/listing/${requestToEdit.listing._id}`}>
+        <Link to={`/listing/${requestToEdit?.listing?._id}`}>
           <button>Back to the listing details</button>
         </Link> </>)}
       </div>
