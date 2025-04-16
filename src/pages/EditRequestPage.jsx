@@ -54,6 +54,7 @@ export const EditRequestPage = () => {
           onDelete={handleDelete}
         />
         <hr />
+        {requestToEdit.listing && (<>
         <h4>{requestToEdit.listing.title}</h4>
         <p>
           <strong>Address:</strong> {requestToEdit.listing.address},{" "}
@@ -64,7 +65,7 @@ export const EditRequestPage = () => {
         </p>
         <Link to={`/listing/${requestToEdit.listing._id}`}>
           <button>Back to the listing details</button>
-        </Link>
+        </Link> </>)}
       </div>
     </main>
   );
