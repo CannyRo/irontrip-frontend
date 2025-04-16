@@ -40,7 +40,7 @@ export const HomePage = () => {
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
       <div className="listings-page-container">
       <div className="listings-grid">
-        {filteredListings.map((listing) => (
+        {filteredListings && filteredListings.map((listing) => (
           <div key={listing._id} className="listing-card">
             <h3>{listing.title}</h3>
             <p>{listing.description}</p>
