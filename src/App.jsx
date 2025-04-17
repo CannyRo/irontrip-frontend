@@ -34,7 +34,6 @@ function App() {
         <Route path="/create-listing" element={<CreateListingPage />} />
         <Route path="/edit-listing/:listingId" element={<EditListingPage />} />
         <Route path="/requests" element={<RequestsPage />} />
-        <Route path="/request/:requestId" element={<RequestDetailPage />} />
         <Route path="/listings/:listingId/request" element={<CreateRequestPage />} />
         <Route path="/edit-request/:requestId" element={<EditRequestPage />} />
         <Route path="/listings" element={<ListingsPage />} />
