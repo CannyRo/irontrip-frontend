@@ -62,7 +62,7 @@ The full-stack application must meet the following technical requirements:
 - Frontend Repository URL: [Click here](https://github.com/CannyRo/irontrip-frontend)
 - Frontend Live URL: [Click here](https://irontrip-frontend.netlify.app/)
 
-- Backend Repository URL: [Click here](https://github.com/ecastanedam)
+- Backend Repository URL: [Click here](https://github.com/ecastanedam/irontrip-backend)
 
 - Slides Presentation URL: [Click here]()
 
