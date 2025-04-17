@@ -11,7 +11,7 @@ This is one of our projects in the [Ironhack](https://www.ironhack.com/fr-en/web
   - [Deliverable Expected](#deliverable-expected)
   - [Links](#links)
 - [Authors](#authors)
-  - [Jennifer MERAT](#jennifer-merat)
+  - [Enrique CASTAÑEDA](#enrique-castañeda)
   - [Ronan CANNY](#ronan-canny)
 - [React + Vite](#react-+-vite)
 - [Expanding the ESLint configuration](#expanding-the-eslint-configuration)
