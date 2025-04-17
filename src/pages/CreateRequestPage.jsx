@@ -45,21 +45,24 @@ export const CreateRequestPage = () => {
 
   return (
     <main>
-      <div className="create-listing-container">
-        <h2>Create a new Request</h2>
-        <RequestForm onSubmit={handleSubmit}/>
+      <div className="glass-container">
+        <h2 className="resume-section-title">Create a new Request</h2>
+        <RequestForm onSubmit={handleSubmit} />
         <hr />
-        <h4>{listing.title}</h4>
-        <p>
-          <strong>Address:</strong> {listing.address}, {listing.city},{" "}
-          {listing.country}
-        </p>
-        <p>
-          <strong>Host:</strong> {listing.host?.username || "Unknown"}
-        </p>
-        <Link to={`/listing/${listing._id}`}>
-          <button>Back to the listing details</button>
-        </Link>
+        <div className="resume-section">
+          <h3 className="resume-section-title">{listing.title}</h3>
+          <p className="resume-section-text">
+            <span>Address:</span> {listing.address}, {listing.city},{" "}
+            {listing.country}
+          </p>
+          <p className="username">
+            <span className="username-label">Host:</span>{" "}
+            {listing.host?.username || "Unknown"}
+          </p>
+          <Link to={`/listing/${listing._id}`}>
+            <button className="btn-form">Back to the listing details</button>
+          </Link>
+        </div>
       </div>
     </main>
   );

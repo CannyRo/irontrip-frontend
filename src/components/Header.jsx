@@ -1,14 +1,18 @@
-import React from 'react'
-import { Link } from 'react-router'
-import { Navbar } from './Navbar'
+import "./Header.css";
+import { Link } from "react-router";
+import { Navbar } from "./Navbar";
 
 export const Header = () => {
   return (
-    <header>
-        <Link to="/">
-        <h1>IRONTRIP</h1>
-        </Link>
-        <Navbar/>
+    <header className="header">
+      <div className="header-container">
+        <div className="logo-container">
+          <Link to="/">
+            <h1 className="logo-text">IRONTRIP</h1>
+          </Link>
+        </div>
+        <Navbar />
+      </div>
     </header>
-  )
-}
+  );
+};

@@ -5,11 +5,16 @@ import { SignupFom } from "../components/SignupFom";
 export const SignupPage = () => {
   return (
     <main>
-      <h2>SignupPage</h2>
-      <SignupFom />
-      <p>
-        Already a member... <Link to="/login">Login</Link>
-      </p>
+      <div className="glass-container">
+        <h2>Sign-Up</h2>
+        <SignupFom />
+        <p>
+          Already a member ?{" "}
+          <Link to="/login">
+            <span className="link-bold">Login</span>
+          </Link>
+        </p>
+      </div>
     </main>
   );
 };

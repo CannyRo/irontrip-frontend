@@ -1,22 +1,19 @@
-import { useContext, useEffect } from "react";
+import "./Navbar.css";
+import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { Link } from "react-router";
 
 export const Navbar = () => {
-  const { isLoggedIn, user, userDetail, handleLougoutuser } = useContext(AuthContext);
+  const { isLoggedIn, handleLougoutuser } =
+    useContext(AuthContext);
 
-  // useEffect(() => {
-  //   console.log("user details from CONTEXT ==> ",userDetail);
-  //   console.log("user ==> ", user);
-  // }, [user, userDetail]);
-  
   return (
-    <nav>
-      <Link to="/">
-        <button>Home</button>
-      </Link>
+    <nav className="navbar">
       {isLoggedIn && (
-        <>
+        <div className="navbar-menu-connected">
+          <Link to="/">
+            <button>Home</button>
+          </Link>
           <Link to="/create-listing">
             <button>Create Listing</button>
           </Link>
@@ -26,22 +23,35 @@ export const Navbar = () => {
           <Link to="/requests">
             <button>My Request</button>
           </Link>
+        </div>
+      )}
+      {isLoggedIn && (
+        <div className="login-buttons-connected">
           <Link to="/profile">
             <button>My Profile</button>
           </Link>
-          <button onClick={handleLougoutuser}>Logout</button>
-        </>
+          <button onClick={handleLougoutuser} className="link-like">
+            Logout
+          </button>
+        </div>
       )}
       {!isLoggedIn && (
         <>
-          <Link to="/signup">
-            {" "}
-            <button>Sign Up</button>{" "}
-          </Link>
-          <Link to="/login">
-            {" "}
-            <button>Login</button>{" "}
-          </Link>
+          <div className="navbar-menu-disconnected">
+            <Link to="/">
+              <button>Home</button>
+            </Link>
+          </div>
+          <div className="login-buttons-disconnected">
+            <Link to="/signup">
+              {" "}
+              <button>SignUp</button>{" "}
+            </Link>
+            <Link to="/login">
+              {" "}
+              <button>Login</button>{" "}
+            </Link>
+          </div>
         </>
       )}
     </nav>

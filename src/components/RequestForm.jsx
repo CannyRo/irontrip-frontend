@@ -28,9 +28,6 @@ export const RequestForm = ({
       setDeparture(getFormattedDate(initialData.departureDate));
       setMessageRequest(initialData.messageToHost || "");
       setStatusRequest(initialData.status || "Pending");
-
-      // console.log("user?.id == ",user?.id);
-      // console.log("initialData?.host?.id == ", initialData?.host?.id);
     }
   }, [isUpdateForm, initialData]);
 
@@ -50,48 +47,48 @@ export const RequestForm = ({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Start Date:
-        <input
-          type="date"
-          value={arrival}
-          onChange={(e) => setArrival(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        End Date:
-        <input
-          type="date"
-          value={departure}
-          onChange={(e) => setDeparture(e.target.value)}
-          required
-        />
-      </label>
+    <form onSubmit={handleSubmit} className="form-container">
+      <div className="listing-card-date">
+        <div className="form-control">
+          <label>Start: </label>
+          <input
+            type="date"
+            value={arrival}
+            onChange={(e) => setArrival(e.target.value)}
+            required
+            className="flex-grow"
+          />
+        </div>
+        <div className="form-control">
+          <label>
+            End:</label>
+            <input
+              type="date"
+              value={departure}
+              onChange={(e) => setDeparture(e.target.value)}
+              required
+              className="flex-grow"
+            />
+          
+        </div>
+      </div>
+
       <label>
         Message:
         <textarea
+          placeholder="Type your message here..."
           value={messageRequest}
           onChange={(e) => setMessageRequest(e.target.value)}
           required
+          rows={7}
         >
           {messageRequest}
         </textarea>
       </label>
       {isUpdateForm === true && user?.id === initialData?.host?._id && (
-        <div>
+        <div className="radio-button-container">
           <label>Request status:</label>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "8px",
-              padding: "12px",
-              border: "1px solid #ccc",
-              borderRadius: "5px",
-            }}
-          >
+          <div className="radio-button-group">
             <label
               style={{
                 display: "flex",
@@ -149,9 +146,11 @@ export const RequestForm = ({
         </div>
       )}
 
-      <button type="submit">{isUpdateForm ? "Update" : "Submit"}</button>
+      <button type="submit" className="btn-form">
+        {isUpdateForm ? "Update" : "Submit"}
+      </button>
       {isUpdateForm === true && user?.id === initialData?.traveler?._id && (
-        <button type="button" onClick={handleDelete}>
+        <button type="button" onClick={handleDelete} className="btn-form">
           Delete
         </button>
       )}

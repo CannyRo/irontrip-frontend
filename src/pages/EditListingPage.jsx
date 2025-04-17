@@ -43,20 +43,14 @@ export const EditListingPage = () => {
   if (!listingId) return <p>Invalid listing ID.</p>;
   if (!initialValues || !listingToEdit) return <p>Loading...</p>;
 
-  // const defaultValues = {
-  //   title: "",
-  //   address: "",
-  //   city: "",
-  //   country: "",
-  //   description: "",
-  //   image: "",
-  //   ...initialValues, // Override defaults with fetched values
-  // };
 
   return (
-    <div className="edit-listing-container">
+    <main>
+      <div className="edit-listing-container">
       <h2>Edit Listing</h2>
       <ListingForm initialValues={listingToEdit} onSubmit={handleSubmit} isUpdateForm={true}/>
     </div>
+    </main>
+    
   );
 };

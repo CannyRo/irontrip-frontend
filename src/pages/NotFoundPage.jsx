@@ -2,6 +2,9 @@ import React from 'react'
 
 export const NotFoundPage = () => {
   return (
-    <div>NotFoundPage</div>
+    <main>
+      <div>NotFoundPage</div>
+    </main>
+    
   )
 }

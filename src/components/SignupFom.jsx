@@ -1,7 +1,7 @@
+import "./SignupForm.css";
 import { useState } from "react";
 import { signup } from "../services/auth.service";
 import { useNavigate } from "react-router";
-
 
 export const SignupFom = () => {
   const [username, setUsername] = useState("");
@@ -17,9 +17,8 @@ export const SignupFom = () => {
 
   async function handleSignup(e) {
     e.preventDefault();
-    setError(null); // Reset error state
+    setError(null);
 
-    // Basic validation
     if (!username || !email || !password || !city || !country) {
       setError("All fields are required.");
       return;
@@ -34,7 +33,7 @@ export const SignupFom = () => {
       formToSend.append("password", password);
       formToSend.append("city", city);
       formToSend.append("country", country);
-      formToSend.append("profilePicture", imageFile); // le nom doit correspondre au backend
+      formToSend.append("profilePicture", imageFile);
     } else {
       // if noone image is uploaded we just use the imageUrl
       formToSend = {
@@ -43,95 +42,85 @@ export const SignupFom = () => {
         password,
         city,
         country,
-        profilePicture: imageUrl || ""
+        profilePicture: imageUrl || "",
       };
     }
 
     try {
-        const createdUser = await signup(formToSend);
-        console.log("User created with success. ", createdUser);
-        nav("/login");
-    } catch(error) {
-        console.log(error);
-        setError("Failed to create user. Please check your connection or try again.");
+      const createdUser = await signup(formToSend);
+      console.log("User created with success. ", createdUser);
+      nav("/login");
+    } catch (error) {
+      console.log(error);
+      setError(
+        "Failed to create user. Please check your connection or try again."
+      );
     }
-  };
+  }
 
   return (
-    <form onSubmit={handleSignup}>
-      <label>
-        Username:
-        <input
-          type="text"
-          placeholder="enter a username"
-          value={username}
-          onChange={(e) => {
-            setUsername(e.target.value);
-          }}
-        />
-      </label>
-      <label>
-        Email:
-        <input
-          type="email"
-          placeholder="enter an email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-        />
-      </label>
-      <label>
-        Password:
-        <input
-          type="password"
-          placeholder="enter the password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-      </label>
-      <label>
-        City:
-        <input
-          type="text"
-          placeholder="enter a city"
-          value={city}
-          onChange={(e) => {
-            setCity(e.target.value);
-          }}
-        />
-      </label>
-      <label>
-        Country:
-        <input
-          type="text"
-          placeholder="enter a country"
-          value={country}
-          onChange={(e) => {
-            setCountry(e.target.value);
-          }}
-        />
-      </label>
-      <label>
-        Profile image URL:
-        <input
-          type="text"
-          placeholder="https://..."
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-        />
-      </label>
-      <label>
-        Or upload profile image:
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(e) => setImageFile(e.target.files[0])}
-        />
-      </label>
-      <button type="submit">Signup</button>
+    <form onSubmit={handleSignup} className="form-container">
+      <input
+        type="text"
+        placeholder="Username (ex: John)"
+        value={username}
+        onChange={(e) => {
+          setUsername(e.target.value);
+        }}
+      />
+      <input
+        type="email"
+        placeholder="Email (ex: john@doe.com)"
+        value={email}
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+      />
+      <input
+        type="password"
+        placeholder="Password (ex: pizza)"
+        value={password}
+        onChange={(e) => {
+          setPassword(e.target.value);
+        }}
+      />
+
+      <input
+        type="text"
+        placeholder="City (ex: London)"
+        value={city}
+        onChange={(e) => {
+          setCity(e.target.value);
+        }}
+      />
+      <input
+        type="text"
+        placeholder="Country (ex: United Kingdom)"
+        value={country}
+        onChange={(e) => {
+          setCountry(e.target.value);
+        }}
+      />
+      <br />
+      <label>Paste your profile image URL :</label>
+      <input
+        type="text"
+        placeholder="https://..."
+        value={imageUrl}
+        onChange={(e) => setImageUrl(e.target.value)}
+      />
+
+      <p>OR</p>
+      <label>Upload your profile image:</label>
+      <input
+        type="file"
+        accept="image/*"
+        onChange={(e) => setImageFile(e.target.files[0])}
+      />
+
+      <button type="submit" className="btn-form">
+        Sign-up
+      </button>
     </form>
   );
 };

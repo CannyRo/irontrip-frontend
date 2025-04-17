@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root {
+    color-scheme: light dark;
+    /* --- Colors --- */
+    --text-color : #DCE7ED;
+    --text-color-muted: #8A817C;
+    --background-color : hsl(0, 0%, 12%);
+    --border-color-dark-grey : hsl(0, 0%, 20%);
+    --btn-text-hover: white;
+
+    --background-glass : hsla(0, 0%, 100%, 0.15);
+    --box-shadow-glass : hsla(0, 0%, 0%, 0.2);
+    --border-glass: hsla(0, 0%, 100%, 0.10);
+
+    --background-glass-dark : hsla(0, 0%, 7%, 0.25);
+    --box-shadow-glass-dark : hsla(0, 0%, 0%, 0.1);
+    --border-glass-dark: hsla(0, 0%, 23%, 0.10);
+
+    --primary-color: hsl(217, 91%, 60%);
+    --primary-color-ligth: hsl(217, 91%, 80%);
+    --primary-color-ligth-50: hsla(217, 91%, 80%, 0.5);
+
+    --background-input : hsl(0, 0%, 7%);
+    --color-input : hsl(0, 0%, 88%);
+
+    /* --- Fonts --- */
+    --main-title : "Exo";
+    --main-text : "Poppins";
+}
+
+[data-theme="dark"] {
+    /* --- Colors --- */
+    --text-color : #1E1E1E;
+    --background-color : #DCE7ED;
+}

@@ -42,56 +42,59 @@ export const ProfilePage = () => {
   };
 
   return (
-    <main className="profile-page-container">
-      {userData ? (
-        <div className="profile-card">
-          <img
-            src={userData.profilePicture || "/default-profile.png"} // Fallback to a default image
-            alt={`${userData.name}'s profile`}
-            className="profile-picture"
-          />
-          <h1>User: {userData.username}</h1>
-          <p>
-            <strong>City:</strong> {userData.city || "Not specified."}
-          </p>
-          <p>
-            <strong>Country:</strong> {userData.country || "Not specified."}
-          </p>
-          <div className="bio-section">
-            <strong>Bio:</strong>
-            {isEditing ? (
-              <div>
-                <textarea
-                  value={bio}
-                  onChange={(e) => setBio(e.target.value)}
-                  className="bio-input"
-                />
-                <button onClick={handleBioUpdate} className="save-button">
-                  Save
-                </button>
-                <button
-                  onClick={() => setIsEditing(false)}
-                  className="cancel-button"
-                >
-                  Cancel
-                </button>
+    <main>
+      <div className="home-container">
+        {userData ? (
+          <div className="profile-card"><img
+                src={userData.profilePicture || "/default-profile.png"} // Fallback to a default image
+                alt={`${userData.name}'s profile`}
+                className="profile-picture"
+              />
+            <div className="profil-datas">
+              <div className="profile-info">
+                <h1>{userData.username.toUpperCase()}</h1>
+                <p>{userData.city || "City : Not specified."}</p>
+                <p>{userData.country || "Country : Not specified."}</p>
               </div>
-            ) : (
-              <p>
-                {userData.bio || "You can enter your Bio here"}{" "}
-                <button
-                  onClick={() => setIsEditing(true)}
-                  className="edit-button"
-                >
-                  Edit
-                </button>
-              </p>
-            )}
+              <div className="bio-section">
+              <h3>Bio:</h3>
+              {isEditing ? (
+                <div>
+                  <textarea
+                    value={bio}
+                    onChange={(e) => setBio(e.target.value)}
+                    className="bio-input"
+                    rows={5}
+                  />
+                  <button onClick={handleBioUpdate} className="btn-form">
+                    Save
+                  </button>
+                  <button
+                    onClick={() => setIsEditing(false)}
+                    className="btn-form"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <p>{userData.bio || "You can enter your Bio here..."} </p>
+                  <button
+                    onClick={() => setIsEditing(true)}
+                    className="btn-form"
+                  >
+                    Edit
+                  </button>
+                </div>
+              )}
+            </div>
+            </div>
+            
           </div>
-        </div>
-      ) : (
-        <p>Loading profile...</p>
-      )}
+        ) : (
+          <p>Loading profile...</p>
+        )}
+      </div>
     </main>
   );
 };

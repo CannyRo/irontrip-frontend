@@ -1,5 +1,4 @@
-// import { useState } from 'react'
-
+import "./variable.css";
 import "./App.css";
 import { Routes, Route } from "react-router";
 import { HomePage } from "./pages/HomePage";
@@ -9,7 +8,6 @@ import { ProfilePage } from "./pages/ProfilePage";
 import { ListingDetailPage } from "./pages/ListingDetailPage";
 import { CreateListingPage } from "./pages/CreateListingPage";
 import { EditListingPage } from "./pages/EditListingPage";
-import { RequestDetailPage } from "./pages/RequestDetailPage";
 import { CreateRequestPage } from "./pages/CreateRequestPage";
 import { EditRequestPage } from "./pages/EditRequestPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
@@ -20,7 +18,6 @@ import { RequestsPage } from "./pages/RequestsPage";
 import { AboutPage } from "./pages/AboutPage";
 
 function App() {
- 
   return (
     <>
       <Header />

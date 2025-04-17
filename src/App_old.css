@@ -1,0 +1,860 @@
+:root {
+  --primary-color: #3B82F6;
+  --secondary-color: #8CBAC7;
+  --background-color: #1E1E1E;
+  --text-color: #DCE7ED;
+  --muted-color: #8A817C;
+}
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+
+a:hover {
+  color: var(--text-color);
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px; /* Fully rounded buttons */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.primary {
+  background-color: var(--primary-color);
+  color: #FFFFFF; /* White text */
+}
+
+button.primary:hover {
+  background-color: #60A5FA; /* Slightly lighter blue */
+}
+
+button.secondary {
+  background-color: var(--secondary-color);
+  color: #1E3A8A; /* Dark blue text */
+}
+
+button.secondary:hover {
+  background-color: #C0C0C0; /* Slightly darker gray */
+}
+
+button.danger {
+  background-color: #8A817C; /* Grayish brown */
+  color: var(--text-color);
+}
+
+button.danger:hover {
+  background-color: #4A4A48; /* Dark gray */
+  transform: scale(1.05);
+}
+
+.create-listing-container {
+  max-width: 600px;
+  margin: 40px auto; /* Center the form */
+  padding: 30px;
+  background: var(--background-color); /* Dark background for card-like appearance */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  color: var(--text-color);
+}
+
+/* Header Styling */
+.create-listing-container h2 {
+  font-size: 28px; /* Match the "Your Listings" title */
+  font-weight: bold;
+  color: var(--secondary-color);
+  text-align: center;
+  margin-bottom: 20px; /* Add spacing below the title */
+}
+
+/* Form Layout */
+.create-listing-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Add consistent spacing between fields */
+}
+
+/* Label Styling */
+.create-listing-container label {
+  font-weight: bold;
+  color: var(--text-color); /* Light blue for better readability */
+  font-size: 16px;
+}
+
+/* Input and Textarea Styling */
+.create-listing-container input,
+.create-listing-container textarea {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #333333; /* Dark border */
+  border-radius: 5px;
+  background-color: #121212; /* Dark input background */
+  color: #E0E0E0; /* Light text */
+}
+
+.create-listing-container input:focus,
+.create-listing-container textarea:focus {
+  border-color: var(--secondary-color); /* Muted blue for focus */
+  outline: none;
+  box-shadow: 0 0 5px rgba(140, 186, 199, 0.5); /* Subtle glow */
+}
+
+.create-listing-container input::placeholder,
+.create-listing-container textarea::placeholder {
+  color: #888888; /* Muted placeholder color */
+  font-style: italic;
+}
+
+/* Button Styling */
+.create-listing-container button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px; /* Fully rounded buttons */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Submit Button */
+.create-listing-container button[type="submit"] {
+  background-color: var(--primary-color);
+  color: #FFFFFF; /* White text */
+}
+
+.create-listing-container button[type="submit"]:hover {
+  background-color: #60A5FA; /* Slightly lighter blue */
+  transform: scale(1.05); /* Slight zoom on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Add Availability Button */
+.add-availability-button {
+  background-color: var(--secondary-color);
+  color: #121212; /* Dark text for contrast */
+}
+
+.add-availability-button:hover {
+  background-color: var(--text-color);
+  transform: scale(1.05);
+}
+
+.remove-availability-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.remove-availability-button:hover {
+  background-color: #a71d2a;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100dvh;
+}
+main {
+    flex-grow: 1;
+    padding: 20px;
+}
+header {
+  background-color: #1E3A8A; /* Dark blue background */
+  padding: 15px 30px; /* Add padding for better spacing */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+header h1 {
+  color: #FFFFFF; /* White text for contrast */
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.navbar {
+  display: flex;
+  gap: 20px; /* Add spacing between links */
+}
+
+.navbar a {
+  color: #FFFFFF; /* White text for links */
+  font-weight: bold;
+  padding: 10px 15px; /* Add padding for clickable area */
+  border-radius: 20px; /* Rounded corners for links */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar a:hover {
+  background-color: var(--primary-color);
+  color: #FFFFFF; /* Keep text white */
+}
+
+footer {
+  background-color: var(--background-color);
+  color: var(--muted-color);
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+
+footer a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--primary-color);
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  border-radius: 15px; /* Keep rounded corners */
+  padding: 30px; /* Maintain spacing */
+  margin: 20px auto; /* Center the card and add spacing */
+  max-width: 600px; /* Limit the card width */
+  color: var(--text-color);
+}
+
+.card h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--secondary-color);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.card h2, .card h3 {
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+}
+
+.card p {
+  color: var(--muted-color);
+  margin-bottom: 10px;
+}
+
+.card .action-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px; /* Add spacing between buttons */
+  margin-top: 20px; /* Add spacing above the buttons */
+}
+
+.card .action-buttons button {
+  flex: 1; /* Equal button width */
+  padding: 12px 20px; /* Increase padding for better usability */
+  font-size: 16px;
+  border-radius: 30px; /* Fully rounded buttons */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button.primary {
+  background-color: var(--primary-color);
+  color: #FFFFFF; /* White text */
+}
+
+button.primary:hover {
+  background-color: #60A5FA; /* Slightly lighter blue */
+}
+
+button.secondary {
+  background-color: var(--secondary-color);
+  color: #1E3A8A; /* Dark blue text */
+}
+
+button.secondary:hover {
+  background-color: #C0C0C0; /* Slightly darker gray */
+}
+
+button.danger {
+  background-color: #8A817C; /* Grayish brown */
+  color: var(--text-color);
+}
+
+button.danger:hover {
+  background-color: #4A4A48; /* Dark gray */
+  transform: scale(1.05);
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Styles for CreateListingPage */
+/* Create Listing Container */
+.create-listing-container {
+  max-width: 600px;
+  margin: 40px auto; /* Center the form */
+  padding: 30px;
+  background: var(--background-color); /* Dark background for card-like appearance */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  color: var(--text-color);
+}
+
+/* Header Styling */
+.create-listing-container h2 {
+  font-size: 28px; /* Match the "Your Listings" title */
+  font-weight: bold;
+  color: var(--secondary-color);
+  text-align: center;
+  margin-bottom: 20px; /* Add spacing below the title */
+}
+
+/* Form Layout */
+.create-listing-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Add consistent spacing between fields */
+}
+
+/* Label Styling */
+.create-listing-container label {
+  font-weight: bold;
+  color: var(--text-color); /* Light blue for better readability */
+  font-size: 16px;
+}
+
+/* Input and Textarea Styling */
+.create-listing-container input,
+.create-listing-container textarea {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #333333; /* Dark border */
+  border-radius: 5px;
+  background-color: #121212; /* Dark input background */
+  color: #E0E0E0; /* Light text */
+}
+
+.create-listing-container input:focus,
+.create-listing-container textarea:focus {
+  border-color: var(--secondary-color); /* Muted blue for focus */
+  outline: none;
+  box-shadow: 0 0 5px rgba(140, 186, 199, 0.5); /* Subtle glow */
+}
+
+.create-listing-container input::placeholder,
+.create-listing-container textarea::placeholder {
+  color: #888888; /* Muted placeholder color */
+  font-style: italic;
+}
+
+/* Add Availability button */
+.add-availability-button {
+  background-color: var(--secondary-color);
+  color: #121212; /* Dark text for contrast */
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 30px; /* Fully rounded button */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.add-availability-button:hover {
+  background-color: var(--text-color);
+  transform: scale(1.05); /* Slight zoom on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Remove button */
+.availability-range button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.availability-range button:hover {
+  background-color: #a71d2a;
+  transform: scale(1.02);
+}
+
+/* Remove Availability button */
+.remove-availability-button {
+  background-color: #dc3545;
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.remove-availability-button:hover {
+  background-color: #a71d2a;
+  transform: scale(1.02);
+}
+
+/* Align buttons in the availability section */
+.availability-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+/* Availability section */
+.availability-section {
+  margin-top: 20px;
+  padding: 20px; /* Match padding with other fields */
+  background-color: transparent; /* Remove blue background */
+  border: none; /* Remove border */
+  box-shadow: none; /* Remove shadow */
+}
+
+.availability-section h4 {
+  margin-bottom: 15px;
+  color: var(--text-color); /* Light blue for consistency */
+  font-size: 16px; /* Match label font size */
+  font-weight: bold;
+  text-align: left; /* Align heading with other fields */
+}
+
+/* Availability Range Inputs */
+.availability-range {
+  display: flex;
+  gap: 15px; /* Add spacing between inputs */
+}
+
+.availability-range label {
+  font-weight: bold;
+  color: var(--text-color); /* Light blue for labels */
+  font-size: 16px;
+}
+
+.availability-range input {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #333333; /* Match other input borders */
+  border-radius: 5px;
+  background-color: #121212; /* Match other input backgrounds */
+  color: #E0E0E0; /* Match other input text color */
+}
+
+.availability-range input:focus {
+  border-color: var(--secondary-color); /* Muted blue for focus */
+  outline: none;
+  box-shadow: 0 0 5px rgba(140, 186, 199, 0.5); /* Subtle glow */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .availability-range {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .availability-range button {
+    align-self: flex-end;
+  }
+
+  .create-listing-container {
+    padding: 20px;
+  }
+
+  .add-availability-button,
+  .create-listing-container button[type="submit"] {
+    width: 100%; /* Full-width buttons on smaller screens */
+  }
+
+  .actions {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px;
+  }
+
+  .actions button {
+    width: 100%; /* Full-width buttons */
+  }
+
+  .book-dates-button {
+    width: 100%; /* Full-width button */
+  }
+
+  .navbar {
+    flex-direction: column; /* Stack links vertically */
+    gap: 10px;
+  }
+
+  .listing-card {
+    padding: 15px;
+  }
+
+  .listing-actions {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px;
+  }
+}
+
+/* Listings Page Container */
+.listings-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  border-radius: 15px;
+  
+}
+
+/* Listings Header */
+.listings-header {
+  font-size: 36px; /* Larger font size */
+  font-weight: bold;
+  color: var(--secondary-color);
+  margin-bottom: 40px; /* Add spacing below the title */
+  text-align: center;
+}
+
+/* Listings Grid */
+.listings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Listing Card */
+.listing-card {
+  background: var(--background-color); /* Dark background for cards */
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
+  text-align: left; /* Align content to the left */
+}
+
+.listing-card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+/* Listing Content */
+.listing-content {
+  padding: 20px;
+  text-align: left;
+}
+
+.listing-content h3 {
+  font-size: 20px;
+  color: var(--secondary-color);
+  margin-bottom: 10px;
+}
+
+.listing-content p {
+  font-size: 14px;
+  color: var(--muted-color);
+  margin-bottom: 20px;
+}
+
+/* Listing Actions */
+.listing-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Add spacing between buttons */
+  margin-top: 15px;
+}
+
+.listing-actions button {
+  flex: 1; /* Equal button width */
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 30px; /* Rounded buttons */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.primary {
+  background-color: var(--primary-color);
+  color: #FFFFFF; /* White text */
+}
+
+button.primary:hover {
+  background-color: #60A5FA; /* Slightly lighter blue */
+}
+
+/* Form styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: bold;
+  color: #E0E0E0;
+}
+
+input, textarea, select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #333333;
+  border-radius: 5px;
+  background-color: #121212;
+  color: #E0E0E0;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--secondary-color); /* Muted blue for focus */
+  outline: none;
+  box-shadow: 0 0 5px rgba(140, 186, 199, 0.5); /* Subtle glow */
+}
+
+/* Actions Section */
+.actions {
+  display: flex;
+  justify-content: space-between; /* Space out buttons evenly */
+  gap: 15px; /* Add consistent spacing between buttons */
+  margin-top: 20px; /* Add spacing above the buttons */
+}
+
+/* Book Dates Button */
+.book-dates-button {
+  display: block;
+  margin: 20px auto 0; /* Center the button */
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 30px;
+  background-color: var(--secondary-color);
+  color: #121212; /* Dark text */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.book-dates-button:hover {
+  background-color: var(--text-color);
+}
+
+/* Image Container */
+.image-container {
+  text-align: center; /* Center the image */
+  margin: 20px 0; /* Add spacing above and below the image */
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px; /* Add rounded corners for consistency */
+}
+
+/* Edit Listing Container */
+.edit-listing-container {
+  max-width: 500px; /* Reduce width for better focus */
+  margin: 50px auto; /* Center the form vertically and horizontally */
+  padding: 40px; /* Add more padding for spacing */
+  background: linear-gradient(135deg, #2C2C2C, var(--background-color)); /* Subtle gradient */
+  border-radius: 20px; /* Slightly more rounded corners */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow for emphasis */
+}
+
+.edit-listing-container h2 {
+  font-size: 32px; /* Larger title */
+  font-weight: bold;
+  color: var(--secondary-color);
+  text-align: center;
+  margin-bottom: 30px; /* Add more spacing below the title */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Add spacing between fields */
+}
+
+form label {
+  font-weight: bold;
+  color: var(--text-color); /* Light blue for labels */
+}
+
+form input,
+form textarea {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #333333; /* Match input borders */
+  border-radius: 5px;
+  background-color: #121212; /* Match input background */
+  color: #E0E0E0; /* Match input text color */
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: var(--secondary-color); /* Muted blue for focus */
+  outline: none;
+  box-shadow: 0 0 5px rgba(140, 186, 199, 0.5); /* Subtle glow */
+}
+
+form .actions {
+  display: flex;
+  justify-content: space-between; /* Space out buttons */
+  gap: 15px;
+}
+
+form .actions button {
+  flex: 1; /* Equal button width */
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form .actions button.primary {
+  background-color: var(--primary-color);
+  color: #FFFFFF; /* White text */
+}
+
+form .actions button.primary:hover {
+  background-color: #60A5FA; /* Slightly lighter blue */
+}
+
+form .actions button.secondary {
+  background-color: var(--secondary-color);
+  color: #1E3A8A; /* Dark blue text */
+}
+
+form .actions button.secondary:hover {
+  background-color: #C0C0C0; /* Slightly darker gray */
+}
+
+form .actions button.danger {
+  background-color: #8A817C; /* Grayish brown */
+  color: var(--text-color);
+}
+
+form .actions button.danger:hover {
+  background-color: #4A4A48; /* Dark gray */
+}
+
+.edit-listing-container button {
+  padding: 15px 25px; /* Increase padding for better clickability */
+  font-size: 16px;
+  border: none;
+  border-radius: 30px; /* Fully rounded buttons */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.edit-listing-container button[type="submit"] {
+  background-color: var(--primary-color);
+  color: #FFFFFF; /* White text */
+}
+
+.edit-listing-container button[type="submit"]:hover {
+  background-color: #60A5FA; /* Slightly lighter blue */
+  transform: scale(1.05); /* Slight zoom on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.edit-listing-container input,
+.edit-listing-container textarea {
+  padding: 15px; /* Increase padding for better usability */
+  font-size: 16px;
+  border: 1px solid #444; /* Subtle border */
+  border-radius: 8px; /* Slightly rounded corners */
+  background-color: #1E1E1E; /* Match the dark theme */
+  color: var(--text-color); /* Light text for readability */
+}
+
+.edit-listing-container input:focus,
+.edit-listing-container textarea:focus {
+  border-color: var(--primary-color); /* Highlight border on focus */
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.5); /* Add glow effect */
+  outline: none;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  gap: 20px; /* Spacing between links */
+}
+
+.navbar a {
+  color: #FFFFFF; /* White text for links */
+  font-weight: bold;
+  padding: 10px 15px; /* Add padding for clickable area */
+  border-radius: 20px; /* Rounded corners for links */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar a:hover {
+  background-color: var(--primary-color);
+  color: #FFFFFF; /* Keep text white */
+}
+
+/* Footer */
+.footer {
+  background-color: var(--background-color);
+  color: var(--muted-color);
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.footer a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: var(--primary-color);
+}
+
+/* Add spacing between sections */
+section {
+  margin-bottom: 40px; /* Add space between sections */
+  padding: 20px; /* Add padding for better spacing */
+}
