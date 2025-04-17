@@ -21,13 +21,6 @@ export const CreateListingPage = () => {
       return;
     }
 
-    // const payload = {
-    //   ...listingData,
-    //   host: user.id, // Add the host ID to the payload
-    // };
-
-    // console.log("Payload being sent to create listing:", payload);
-
     try {
       await handleCreateListing(listingData); // Call handleCreateListing
       navigate("/listings"); // Redirect to the "My Listings" page after creation
@@ -39,11 +32,15 @@ export const CreateListingPage = () => {
   if (isLoading) return <p className="loading-message">Loading...</p>; // Show a loading message while authentication is in progress
 
   return (
-    <div className="create-listing-page">
-      <div className="create-listing-container card">
-        <h2 className="create-listing-title card-title">Create a Listing</h2>
-        <ListingForm onSubmit={handleSubmit} host={user.id} className="create-listing-form card-content" />
+    <main>
+      <div className="glass-container">
+        <h2>Create a new Listing</h2>
+        <ListingForm
+          onSubmit={handleSubmit}
+          host={user.id}
+          className="create-listing-form card-content"
+        />
       </div>
-    </div>
+    </main>
   );
 };

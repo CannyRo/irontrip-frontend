@@ -3,7 +3,8 @@ import "../App.css";
 
 export const AboutPage = () => {
   return (
-    <div className="about-page">
+    <main>
+      <div className="about-page">
       <h1>About IronTrip App</h1>
       <section className="project-description">
         <p>
@@ -41,6 +42,8 @@ export const AboutPage = () => {
         </div>
       </section>
     </div>
+    </main>
+    
   );
 };
 

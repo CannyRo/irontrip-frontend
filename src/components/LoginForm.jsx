@@ -28,30 +28,27 @@ export const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={handleLogin}>
-      <label>
-        Email:
-        <input
-          type="email"
-          placeholder="enter an email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-        />
-      </label>
-      <label>
-        Password:
-        <input
-          type="password"
-          placeholder="enter the password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-      </label>
-      <button type="submit">Login</button>
+    <form onSubmit={handleLogin} className="form-container">
+      <input
+        type="email"
+        placeholder="Email (ex: john@doe.com)"
+        value={email}
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+      />
+
+      <input
+        type="password"
+        placeholder="Password (ex: pizza)"
+        value={password}
+        onChange={(e) => {
+          setPassword(e.target.value);
+        }}
+      />
+      <button type="submit" className="btn-form">
+        Login
+      </button>
     </form>
   );
 };

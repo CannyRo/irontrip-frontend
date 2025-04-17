@@ -1,0 +1,30 @@
+.form-container{
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+align-items: center;
+width: 100%;
+}
+.form-container label{
+    width: 100%;
+    padding: 0;
+}
+.form-container input, .form-container textarea{
+    margin-top: 0.25rem;
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid var(--border-color-dark-grey);
+    border-radius: 5px;
+    background-color: var(--background-input);
+    color: var(--color-input);
+}
+.form-container input:target, 
+.form-container input:hover,
+.form-container input:focus-visible,
+.form-container input:focus,
+.form-container input:active{
+    border-color: var(--primary-color-ligth);
+    outline: none;
+    box-shadow: 0 0 5px var(--primary-color-ligth-50);
+}

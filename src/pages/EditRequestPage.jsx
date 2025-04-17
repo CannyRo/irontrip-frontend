@@ -9,7 +9,6 @@ export const EditRequestPage = () => {
   const { handleUpdateRequest, handleDeleteRequest, isLoadingReq, requests } =
     useContext(RequestContext);
   const { user, isLoggedIn, isLoading } = useContext(AuthContext);
-  // const { isLoadingListing, listings } = useContext(ListingContext);
   const { isLoadingListing } = useContext(ListingContext);
   const { requestId } = useParams();
 
@@ -37,7 +36,7 @@ export const EditRequestPage = () => {
 
   const handleDelete = () => {
     handleDeleteRequest(requestId);
-  }
+  };
 
   if (isLoading) return <p>Authentification is loading...</p>;
   if (isLoadingListing) return <p>Listing detail is loading...</p>;
@@ -45,7 +44,7 @@ export const EditRequestPage = () => {
 
   return (
     <main>
-      <div className="create-listing-container">
+      <div className="glass-container">
         <h2>Update a Request</h2>
         <RequestForm
           isUpdateForm={true}
@@ -54,18 +53,25 @@ export const EditRequestPage = () => {
           onDelete={handleDelete}
         />
         <hr />
-        {requestToEdit.listing && (<>
-        <h4>{requestToEdit?.listing?.title}</h4>
-        <p>
-          <strong>Address:</strong> {requestToEdit?.listing?.address},{" "}
-          {requestToEdit?.listing?.city}, {requestToEdit?.listing?.country}
-        </p>
-        <p>
-          <strong>Host:</strong> {requestToEdit?.host?.username || "Unknown"}
-        </p>
-        <Link to={`/listing/${requestToEdit?.listing?._id}`}>
-          <button>Back to the listing details</button>
-        </Link> </>)}
+
+        {requestToEdit.listing && (
+          <div className="resume-section">
+            <h3 className="resume-section-title">
+              {requestToEdit?.listing?.title}
+            </h3>
+            <p className="resume-section-text">
+              <span>Address:</span> {requestToEdit?.listing?.address},{" "}
+              {requestToEdit?.listing?.city}, {requestToEdit?.listing?.country}
+            </p>
+            <p className="username">
+              <span className="username-label">Host:</span>{" "}
+              {requestToEdit?.listing?.host?.username || "Unknown"}
+            </p>
+            <Link to={`/listing/${requestToEdit?.listing?._id}`}>
+              <button className="btn-form">Back to the listing details</button>
+            </Link>
+          </div>
+        )}
       </div>
     </main>
   );

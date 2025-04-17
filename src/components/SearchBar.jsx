@@ -1,4 +1,4 @@
-import React from "react";
+import './SearchBar.css';
 
 export const SearchBar = ({ searchTerm, setSearchTerm }) => {
   function handleSearch(e) {
@@ -9,13 +9,13 @@ export const SearchBar = ({ searchTerm, setSearchTerm }) => {
     setSearchTerm("");
   }
   return (
-    <div>
+    <div className="searchbar-container">
       <input
         type="text"
         className="form-control search-bar"
         value={searchTerm}
         onChange={handleSearch}
-        placeholder="Filter..."
+        placeholder="Search / Filter..."
       />
       <button onClick={handleCLear}>Clear</button>
     </div>

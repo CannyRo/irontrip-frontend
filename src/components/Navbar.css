@@ -1,0 +1,128 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.navbar-menu-connected {
+    display: flex;
+    flex-wrap: wrap;
+    width: 66%;
+}
+
+.navbar-menu-connected button,
+.login-buttons-connected button {
+    width: 100%;
+    min-height: 3.125rem;
+    padding: 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    border-radius: 0.25rem;
+}
+
+.navbar-menu-connected a,
+.navbar-menu-connected .link-like {
+    width: 50%;
+}
+
+.login-buttons-connected {
+    display: flex;
+    flex-wrap: wrap;
+    width: 33%;
+}
+
+.login-buttons-connected a {
+    width: 100%;
+}
+
+.navbar-menu-disconnected {
+    width: 33%;
+}
+
+.login-buttons-disconnected {
+    display: flex;
+    flex-shrink: 1;
+    width: 66%;
+    gap: 0.25rem;
+}
+
+.navbar-menu-disconnected a,
+.login-buttons-disconnected a,
+.navbar-menu-disconnected button,
+.login-buttons-disconnected button {
+    width: 100%;
+}
+
+.navbar-menu-disconnected button,
+.login-buttons-disconnected button {
+    min-height: 3.125rem;
+    padding: 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    border-radius: 0.25rem;
+}
+
+.navbar-menu-disconnected button:hover,
+.login-buttons-disconnected button:hover, 
+.navbar-menu-connected button:hover,
+.login-buttons-connected button:hover {
+    background: var(--background-glass);
+    box-shadow: 0 0px 5px var(--primary-color-ligth-50);
+    backdrop-filter: blur(4.9px);
+    border: 1px solid var(--primary-color-ligth);
+    font-weight: 700;
+    color: var(--btn-text-hover);
+}
+
+
+@media(min-width: 768px) {
+    .navbar {
+        justify-content: flex-end;
+    }
+
+    .navbar-menu-connected {
+        width: fit-content;
+        justify-content: flex-end;
+    }
+
+    .login-buttons-connected {
+        width: fit-content;
+        justify-content: flex-end;
+    }
+
+    .navbar-menu-connected button,
+    .login-buttons-connected button {
+        min-height: 3.125rem;
+        min-width: 8.25rem;
+    }
+
+    .navbar-menu-disconnected,
+    .login-buttons-disconnected {
+        width: fit-content;
+    }
+
+    .navbar-menu-disconnected a,
+    .login-buttons-disconnected a,
+    .navbar-menu-disconnected button,
+    .login-buttons-disconnected button {
+        width: fit-content;
+        min-width: 8.5rem;
+    }
+}
+
+@media(min-width: 1024px) {
+
+    .navbar-menu-connected,
+    .login-buttons-connected {
+        flex-wrap: nowrap;
+    }
+
+    .navbar-menu-connected button,
+    .login-buttons-connected button {
+        width: fit-content;
+    }
+}

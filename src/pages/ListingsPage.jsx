@@ -40,28 +40,37 @@ export const ListingsPage = () => {
   }
 
   return (
-    <div className="listings-page-container">
-      <h1 className="listings-header">Your Listings</h1>
-      <div className="listings-grid">
-        {listings.map((listing) => (
-          <div key={listing._id} className="listing-card">
-            <div className="listing-image">
-                          </div>
-            <div className="listing-content">
-              <h3>{listing.title}</h3>
-              <p>{listing.description}</p>
-              <div className="listing-actions">
-                <Link to={`/listing/${listing._id}`}>
-                  <button className="primary">View Details</button>
-                </Link>
-                <Link to={`/edit-listing/${listing._id}`}>
-                  <button className="secondary">Edit Listing</button>
-                </Link>
+    <main>
+      <div className="home-container">
+        <h1 className="listings-header">My Listings</h1>
+        <div className="listing-list-container">
+          {listings &&
+            listings.map((listing) => (
+              <div key={listing._id} className="listing-card">
+                <div className="listing-card-content">
+                  <div
+                    className="listing-card-image-container"
+                    style={{ backgroundImage: `url(${listing.image})` }}
+                  >
+                    {/* listing image as background of this container */}
+                  </div>
+                  <div className="listing-card-text-container">
+                    <h3 className="listing-card-title">{listing.title}</h3>
+                    <p className="listing-card-description">{listing.description}</p>
+                  </div>
+                </div>
+                <div className="listing-card-actions">
+                  <Link to={`/listing/${listing._id}`}>
+                    <button className="listing-card-btn">View Details</button>
+                  </Link>
+                  <Link to={`/listings/${listing._id}/request`}>
+                    <button className="listing-card-btn">Book Dates</button>
+                  </Link>
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
+            ))}
+        </div>
       </div>
-    </div>
+    </main>
   );
 };

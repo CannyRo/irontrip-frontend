@@ -1,23 +1,15 @@
 import { useEffect, useState } from "react";
 
 export const ListingForm = ({
-  // initialValues = {
-  //   title: "",
-  //   address: "",
-  //   city: "",
-  //   country: "",
-  //   description: "",
-  //   availability: [{ startDate: "", endDate: "" }],
-  //   image: "", // Default value for the image URL
-  // },
-
   onSubmit,
   host,
   isUpdateForm = false,
   initialValues = null,
 }) => {
-
   const getFormattedDate = (date) => new Date(date).toISOString().split("T")[0];
+  const today = new Date();
+  const tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
 
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
@@ -28,18 +20,9 @@ export const ListingForm = ({
   const [image, setImage] = useState(""); // Use a text input for the image URL
   const [imageFile, setImageFile] = useState(null);
 
-  // const [title, setTitle] = useState(initialValues.title);
-  // const [address, setAddress] = useState(initialValues.address);
-  // const [city, setCity] = useState(initialValues.city);
-  // const [country, setCountry] = useState(initialValues.country);
-  // const [description, setDescription] = useState(initialValues.description);
-  // const [availability, setAvailability] = useState(initialValues.availability || []); // Default to an empty array
-  // const [image, setImage] = useState(initialValues.image); // Use a text input for the image URL
-  // const [imageFile, setImageFile] = useState(null);
-
   useEffect(() => {
     if (isUpdateForm && initialValues) {
-      console.log("here ==> ",initialValues);
+      console.log("here ==> ", initialValues);
       setTitle(initialValues.title);
       setAddress(initialValues.address);
       setCity(initialValues.city);
@@ -51,7 +34,13 @@ export const ListingForm = ({
   }, [isUpdateForm, initialValues]);
 
   const addAvailability = () => {
-    setAvailability([...availability, { startDate: "", endDate: "" }]);
+    setAvailability([
+      ...availability,
+      {
+        startDate: getFormattedDate(today),
+        endDate: getFormattedDate(tomorrow),
+      },
+    ]);
   };
 
   const removeAvailability = (index) => {
@@ -95,11 +84,12 @@ export const ListingForm = ({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-container">
       <label>
         Title:
         <input
           type="text"
+          placeholder="Ex: Cosy sofa in the capital of British..."
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
@@ -109,6 +99,7 @@ export const ListingForm = ({
         Address:
         <input
           type="text"
+          placeholder="Ex: 21 Jump Street..."
           value={address}
           onChange={(e) => setAddress(e.target.value)}
           required
@@ -118,6 +109,7 @@ export const ListingForm = ({
         City:
         <input
           type="text"
+          placeholder="Ex: Vancouver"
           value={city}
           onChange={(e) => setCity(e.target.value)}
           required
@@ -127,6 +119,7 @@ export const ListingForm = ({
         Country:
         <input
           type="text"
+          placeholder="Ex: Canada"
           value={country}
           onChange={(e) => setCountry(e.target.value)}
           required
@@ -136,8 +129,10 @@ export const ListingForm = ({
         Description:
         <textarea
           value={description}
+          placeholder="Ex: Spartan bed but warm welcome in a former church rehabilitated to provide accommodation."
           onChange={(e) => setDescription(e.target.value)}
           required
+          rows={7}
         />
       </label>
       <label>
@@ -149,9 +144,9 @@ export const ListingForm = ({
           placeholder="Enter the image URL"
         />
       </label>
-
+      <p>OR</p>
       <label>
-        Or upload profile image:
+        Upload image:
         <input
           type="file"
           accept="image/*"
@@ -160,12 +155,12 @@ export const ListingForm = ({
       </label>
 
       <div className="availability-section">
-        <h4>Availability:</h4>
+        <label>Availability:</label>
         {availability && availability.length > 0 ? (
           availability.map((range, index) => (
             <div key={index} className="availability-range">
-              <label>
-                Start Date:
+              <div>
+                <label>Start Date:</label>
                 <input
                   type="date"
                   value={getFormattedDate(range.startDate)}
@@ -174,9 +169,9 @@ export const ListingForm = ({
                   }
                   required
                 />
-              </label>
-              <label>
-                End Date:
+              </div>
+              <div>
+                <label>End Date:</label>
                 <input
                   type="date"
                   value={getFormattedDate(range.endDate)}
@@ -185,15 +180,15 @@ export const ListingForm = ({
                   }
                   required
                 />
-              </label>
+              </div>
             </div>
           ))
         ) : (
-          <p>No availability provided.</p>
+          <p>(No availability provided.)</p>
         )}
       </div>
       <div className="availability-buttons">
-        <button type="button" onClick={addAvailability}>
+        <button type="button" onClick={addAvailability} className="btn-form">
           Add Availability
         </button>
         {availability?.length > 1 && (
@@ -205,7 +200,9 @@ export const ListingForm = ({
           </button>
         )}
       </div>
-      <button type="submit">{isUpdateForm ? "Update" : "Submit"}</button>
+      <button type="submit" className="btn-form">
+        {isUpdateForm ? "Update" : "Submit"}
+      </button>
     </form>
   );
 };
