@@ -4,8 +4,8 @@
     /* --- Colors --- */
     --text-color : #DCE7ED;
     --text-color-muted: #8A817C;
-    --background-color : hsl(0, 0%, 12%);
-    --border-color-dark-grey : hsl(0, 0%, 20%);
+    --background-color : #1f1f1f;
+    --border-color-dark-grey : #333333;
     --btn-text-hover: white;
 
     --background-glass : hsla(0, 0%, 100%, 0.15);
@@ -16,8 +16,8 @@
     --box-shadow-glass-dark : hsla(0, 0%, 0%, 0.1);
     --border-glass-dark: hsla(0, 0%, 23%, 0.10);
 
-    --primary-color: hsl(217, 91%, 60%);
-    --primary-color-ligth: hsl(217, 91%, 80%);
+    --primary-color: #3d84f5;
+    --primary-color-ligth: #9ec1fa;
     --primary-color-ligth-50: hsla(217, 91%, 80%, 0.5);
 
     --background-input : hsl(0, 0%, 7%);

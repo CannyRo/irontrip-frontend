@@ -4,6 +4,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import { ListingContext } from "../contexts/ListingContext";
 import { RequestContext } from "../contexts/RequestContext";
 import { RequestForm } from "../components/RequestForm";
+import { Loader } from "../components/Loader";
 
 export const CreateRequestPage = () => {
   const { handleCreateRequest } = useContext(RequestContext);
@@ -40,8 +41,20 @@ export const CreateRequestPage = () => {
     handleCreateRequest(formattedData);
   };
 
-  if (isLoading) return <p>Authentification is loading...</p>;
-  if (isLoadingListing || !listing) return <p>Listing detail is loading...</p>;
+  if (isLoading)
+    return (
+      <main>
+        <Loader/>
+        <p>Authentification is loading...</p>
+      </main>
+    );
+  if (isLoadingListing || !listing)
+    return (
+      <main>
+        <Loader/>
+        <p>Listing detail is loading...</p>
+      </main>
+    );
 
   return (
     <main>

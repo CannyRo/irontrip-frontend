@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { ListingContext } from "../contexts/ListingContext";
 import { AuthContext } from "../contexts/AuthContext";
 import { ListingForm } from "../components/ListingForm";
+import { Loader } from "../components/Loader";
 
 export const CreateListingPage = () => {
   const { handleCreateListing } = useContext(ListingContext);
@@ -29,7 +30,13 @@ export const CreateListingPage = () => {
     }
   };
 
-  if (isLoading) return <p className="loading-message">Loading...</p>; // Show a loading message while authentication is in progress
+  if (isLoading) // Show a loading message while authentication is in progress
+    return (
+      <main>
+        <Loader/>
+        <p className="loading-message">Loading...</p>
+      </main>
+    ); 
 
   return (
     <main>

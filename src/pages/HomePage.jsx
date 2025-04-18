@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router";
 import { ListingContext } from "../contexts/ListingContext";
 import { SearchBar } from "../components/SearchBar";
+import { Loader } from "../components/Loader";
 
 export const HomePage = () => {
   const { isLoadingListing, listings } = useContext(ListingContext);
@@ -28,7 +29,12 @@ export const HomePage = () => {
   }, [listings, searchTerm]);
 
   if (isLoadingListing) {
-    return <p>Loading listings...</p>;
+    return (
+      <main>
+        <Loader />
+        <p>Loading listings...</p>
+      </main>
+    );
   }
 
   return (
@@ -48,7 +54,9 @@ export const HomePage = () => {
                   </div>
                   <div className="listing-card-text-container">
                     <h3 className="listing-card-title">{listing.title}</h3>
-                    <p className="listing-card-description">{listing.description}</p>
+                    <p className="listing-card-description">
+                      {listing.description}
+                    </p>
                   </div>
                 </div>
                 <div className="listing-card-actions">
