@@ -64,7 +64,7 @@ The full-stack application must meet the following technical requirements:
 
 - Backend Repository URL: [Click here](https://github.com/ecastanedam/irontrip-backend)
 
-- Slides Presentation URL: [Click here]()
+- Slides Presentation URL: [Click here](https://docs.google.com/presentation/d/1F-yCA52RYL-UrmpNwFFl5f-q-TQKjfvYbN9wlklpn70)
 
 ## Authors
 
