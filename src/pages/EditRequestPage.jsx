@@ -4,6 +4,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import { ListingContext } from "../contexts/ListingContext";
 import { RequestContext } from "../contexts/RequestContext";
 import { RequestForm } from "../components/RequestForm";
+import { Loader } from "../components/Loader";
 
 export const EditRequestPage = () => {
   const { handleUpdateRequest, handleDeleteRequest, isLoadingReq, requests } =
@@ -38,9 +39,27 @@ export const EditRequestPage = () => {
     handleDeleteRequest(requestId);
   };
 
-  if (isLoading) return <p>Authentification is loading...</p>;
-  if (isLoadingListing) return <p>Listing detail is loading...</p>;
-  if (isLoadingReq || !requestToEdit) return <p>Request is loading...</p>;
+  if (isLoading)
+    return (
+      <main>
+        <Loader/>
+        <p>Authentification is loading...</p>
+      </main>
+    );
+  if (isLoadingListing)
+    return (
+      <main>
+        <Loader/>
+        <p>Listing detail is loading...</p>
+      </main>
+    );
+  if (isLoadingReq || !requestToEdit)
+    return (
+      <main>
+        <Loader/>
+        <p>Request is loading...</p>
+      </main>
+    );
 
   return (
     <main>

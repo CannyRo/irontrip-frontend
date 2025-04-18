@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
 import { getListingsByHost } from "../services/listing.service";
+import { Loader } from "../components/Loader";
 
 export const ListingsPage = () => {
   const { user } = useContext(AuthContext);
@@ -28,7 +29,12 @@ export const ListingsPage = () => {
   }, [user]);
 
   if (loading) {
-    return <p>Loading listings...</p>;
+    return (
+      <main>
+        <Loader />
+        <p>istings are loading...</p>
+      </main>
+    );
   }
 
   if (error) {
@@ -36,7 +42,11 @@ export const ListingsPage = () => {
   }
 
   if (listings.length === 0) {
-    return <p>No listings found for this user.</p>;
+    return (
+      <main>
+        <p>No listings found for this user.</p>
+      </main>
+    );
   }
 
   return (
@@ -56,7 +66,9 @@ export const ListingsPage = () => {
                   </div>
                   <div className="listing-card-text-container">
                     <h3 className="listing-card-title">{listing.title}</h3>
-                    <p className="listing-card-description">{listing.description}</p>
+                    <p className="listing-card-description">
+                      {listing.description}
+                    </p>
                   </div>
                 </div>
                 <div className="listing-card-actions">

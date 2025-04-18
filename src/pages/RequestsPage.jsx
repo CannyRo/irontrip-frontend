@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
 import { RequestContext } from "../contexts/RequestContext";
 import { getRequestsByUser } from "../services/request.service";
+import { Loader } from "../components/Loader";
 
 export const RequestsPage = () => {
   const { isLoggedIn, isLoading, user } = useContext(AuthContext);
@@ -37,7 +38,12 @@ export const RequestsPage = () => {
   if (isLoadingReq || !myRequests) {
     console.log("check isLoadingReq = ", isLoadingReq);
     console.log("check myRequests = ", myRequests);
-    return <p>Request is loading...</p>;
+    return (
+      <main>
+        <Loader />
+        <p>Request is loading...</p>
+      </main>
+    );
   }
   if (myRequests.length === 0) {
     return (
@@ -81,15 +87,15 @@ export const RequestsPage = () => {
                 <h2 className="listing-card-title">{req?.listing?.title}</h2>
                 <div>
                   <p className="username">
-                  <span className="username-label">Host: </span>
-                  {req?.host?.username.toLowerCase()}
-                </p>
-                <p className="username">
-                  <span className="username-label">Traveler: </span>
-                  {req?.traveler?.username.toLowerCase()}
-                </p>
+                    <span className="username-label">Host: </span>
+                    {req?.host?.username.toLowerCase()}
+                  </p>
+                  <p className="username">
+                    <span className="username-label">Traveler: </span>
+                    {req?.traveler?.username.toLowerCase()}
+                  </p>
                 </div>
-                
+
                 <div className="listing-card-actions">
                   <Link to={`/listing/${req?.listing?._id}`}>
                     <button>Back to the listing details</button>

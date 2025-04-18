@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router";
+import { useParams, useNavigate, Link } from "react-router";
 import { ListingContext } from "../contexts/ListingContext";
 import { ListingForm } from "../components/ListingForm";
+import { Loader } from "../components/Loader";
 
 export const EditListingPage = () => {
   const { listingId } = useParams(); // Use listingId instead of id
@@ -40,17 +41,31 @@ export const EditListingPage = () => {
     }
   };
 
-  if (!listingId) return <p>Invalid listing ID.</p>;
-  if (!initialValues || !listingToEdit) return <p>Loading...</p>;
-
+  if (!listingId)
+    return (
+      <main>
+        <p>Invalid listing ID.</p>
+        <Link to="/">Back</Link>
+      </main>
+    );
+  if (!initialValues || !listingToEdit)
+    return (
+      <main>
+        <Loader />
+        <p>Listing detail is loading...</p>
+      </main>
+    );
 
   return (
     <main>
       <div className="edit-listing-container">
-      <h2>Edit Listing</h2>
-      <ListingForm initialValues={listingToEdit} onSubmit={handleSubmit} isUpdateForm={true}/>
-    </div>
+        <h2>Edit Listing</h2>
+        <ListingForm
+          initialValues={listingToEdit}
+          onSubmit={handleSubmit}
+          isUpdateForm={true}
+        />
+      </div>
     </main>
-    
   );
 };
