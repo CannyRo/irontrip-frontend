@@ -97,7 +97,8 @@ main {
 }
 
 .home-container,
-.detail-container {
+.detail-container, 
+.about-container {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -105,6 +106,9 @@ main {
     align-items: center;
     width: 100%;
     max-width: 1440px;
+}
+.about-container{
+    max-width: 768px;
 }
 
 .listing-list-container {
@@ -335,7 +339,7 @@ hr {
     width: 100%;
     height: 100%;
 }
-.detail-info-title {
+.detail-info-title, .about-title {
     font-size: 2rem;
     margin-bottom: 1rem;
 }
@@ -398,6 +402,26 @@ hr {
     color: var(--color-input);
 }
 
+.about-team{
+    width: 100%;
+}
+
+.about-team h2{
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.developer-profiles{
+    display: flex;
+    justify-content: space-around;
+}
+.developer h3{
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+.developer a{
+    color: var(--primary-color-ligth);
+}
 @media (min-width: 1024px){
     .detail-info{
         display: flex;
