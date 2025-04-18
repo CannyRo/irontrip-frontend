@@ -21,7 +21,6 @@ export const EditListingPage = () => {
     const fetchListing = async () => {
       try {
         const listing = await getListingById(listingId); // Fetch the listing by ID
-        console.log("Fetched listing:", listing); // Debugging
         setInitialValues(listing); // Set the listing data
         setListingToEdit(listing.data); // Set the listing data
       } catch (error) {

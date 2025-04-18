@@ -9,13 +9,10 @@ export const ProfilePage = () => {
   const [isEditing, setIsEditing] = useState(false); // State to toggle edit mode
 
   useEffect(() => {
-    console.log("user ==> ", user);
-
     async function getUser() {
       try {
         if (isLoggedIn && user) {
           const userDataFromBackEnd = await getUserById(user.id);
-          console.log("User detail : ", userDataFromBackEnd);
           setUserData(userDataFromBackEnd.data);
           setBio(userDataFromBackEnd.data.bio || "");
         }
@@ -29,9 +26,6 @@ export const ProfilePage = () => {
   const handleBioUpdate = async () => {
     try {
       if (userData) {
-        console.log("userData:", userData); // Debug userData
-        console.log("userData.id:", userData._id); // Debug userData.id
-
         const updatedUser = await updateUserById(user.id, { bio }); // Call the API to update bio
         setUserData(updatedUser.data); // Update the user data with the new bio
         setIsEditing(false); // Exit edit mode

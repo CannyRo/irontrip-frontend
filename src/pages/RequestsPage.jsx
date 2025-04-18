@@ -28,7 +28,6 @@ export const RequestsPage = () => {
       }
       fetchRequests();
     }
-    console.log("myData ", myRequests);
   }, [user?.id, user, isLoading, isLoggedIn, nav]);
 
   const getFormattedDate = (isoDate) =>
@@ -36,8 +35,6 @@ export const RequestsPage = () => {
 
   if (isLoading) return <p>Authentification is loading...</p>;
   if (isLoadingReq || !myRequests) {
-    console.log("check isLoadingReq = ", isLoadingReq);
-    console.log("check myRequests = ", myRequests);
     return (
       <main>
         <Loader />

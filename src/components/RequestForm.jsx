@@ -7,7 +7,6 @@ export const RequestForm = ({
   isUpdateForm = false,
   initialData = null,
 }) => {
-  console.log("isUpdateForm === ", isUpdateForm);
 
   const getFormattedDate = (date) => new Date(date).toISOString().split("T")[0];
 

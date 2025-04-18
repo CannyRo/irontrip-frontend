@@ -37,7 +37,6 @@ const ListingContextWrapper = ({ children }) => {
     setIsLoadingListing(true);
     try {
       const response = await fetchListingById(id); // Call the service function
-      console.log("response - getListingById (CONTEXT) : ",response);
       return response.data; // Return the listing data
     } catch (error) {
       console.error("Error fetching listing by ID:", error);
@@ -51,7 +50,6 @@ const ListingContextWrapper = ({ children }) => {
   const handleUpdateListing = async (id, updatedData) => {
     try {
       const response = await updateListing(id, updatedData);
-      console.log("response from handleUpdateListing - CONTEXT (by using updateListing() from listing.service.js) : ",response);
       const updated = response.data.data;
       setListings((prevListing) => prevListing.map((listingValue)=> listingValue._id === updated._id ? updated : listingValue));
       nav('/listings');

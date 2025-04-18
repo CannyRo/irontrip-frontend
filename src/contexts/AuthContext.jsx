@@ -14,7 +14,6 @@ const AuthContextWrapper = ({ children }) => {
   /* Functions for handling the authentication status (isLoggedIn, isLoading, user) */
 
   const authenticateUser = async () => {
-    console.log("authenticateUser run");
     const tokenFromLocalStorage = localStorage.getItem("authToken");
     if (!tokenFromLocalStorage) {
       setUser(null);
@@ -23,12 +22,10 @@ const AuthContextWrapper = ({ children }) => {
     } else {
       try {
         const responseFromVerifyRoute = await verify(); // Corrected typo here
-        console.log("authenticate user function", responseFromVerifyRoute);
         setUser(responseFromVerifyRoute.data.payload); // Corrected typo here
         setIsLoading(false);
         setIsLoggedIn(true);
         const userDetail = await getUserById(responseFromVerifyRoute.data.payload.id);
-        console.log("=== userDetail === ", userDetail);
         setUserDetail(userDetail.data);
       } catch (error) {
         console.log(error);
@@ -41,13 +38,10 @@ const AuthContextWrapper = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log("useEffect run");
-    // console.log(user);
     authenticateUser();
   }, []);
 
   const handleLougoutuser = async () => {
-    console.log("Logout run");
     logout();
     await authenticateUser();
     nav("/");

@@ -21,7 +21,6 @@ const RequestContextWrapper = ({ children }) => {
     setIsLoadingReq(true);
     try {
       const res = await getAllRequests();
-      console.log("res from fetchAllRequest ", res);
       setRequests(res.data.data);
     } catch (error) {
       console.log(error);
@@ -33,14 +32,12 @@ const RequestContextWrapper = ({ children }) => {
 
   useEffect(()=>{
     fetchAllRequest();
-    // console.log('//== requests ==// ', requests);
   },[]);
 
   // Create a new Request
   const handleCreateRequest = async (requestData) => {
     try {
       const res = await createRequest(requestData);
-      console.log("res.data - handle create", res.data);
       setRequests((prevRequest) => [res.data.data, ...prevRequest]);
       nav('/requests');
     } catch (error) {

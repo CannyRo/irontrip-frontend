@@ -2,7 +2,6 @@ import api from "./api";
 
 // GET user
 export async function getUserById(userId) {
-    console.log("userId => ",userId);
     return api.get(`/user/${userId}`);
 }
 

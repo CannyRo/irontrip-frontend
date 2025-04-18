@@ -22,7 +22,6 @@ export const ListingForm = ({
 
   useEffect(() => {
     if (isUpdateForm && initialValues) {
-      console.log("here ==> ", initialValues);
       setTitle(initialValues.title);
       setAddress(initialValues.address);
       setCity(initialValues.city);

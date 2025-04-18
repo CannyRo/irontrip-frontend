@@ -22,7 +22,6 @@ export const EditRequestPage = () => {
       nav("/login");
     }
     let selectedRequest = requests.find((req) => req._id === requestId);
-    console.log("HERE : ", selectedRequest);
     setRequestToEdit(selectedRequest);
   }, [isLoading, isLoggedIn, nav, requestId, requests]);
 
@@ -31,7 +30,6 @@ export const EditRequestPage = () => {
       console.error("Error: User is not logged in or user is undefined.");
       return;
     }
-    console.log("Updated Request submitted : ", requestData);
     handleUpdateRequest(requestId, requestData);
   };
 

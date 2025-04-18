@@ -2,7 +2,6 @@ import './SearchBar.css';
 
 export const SearchBar = ({ searchTerm, setSearchTerm }) => {
   function handleSearch(e) {
-    console.log(e.target.value);
     setSearchTerm(e.target.value);
   }
   function handleCLear(){

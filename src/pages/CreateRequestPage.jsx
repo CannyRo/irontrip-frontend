@@ -21,7 +21,6 @@ export const CreateRequestPage = () => {
       nav("/login");
     }
     let selectedListing = listings.find((listing) => listing._id === listingId);
-    // console.log("HERE : ", selectedListing);
     setListing(selectedListing);
   }, [isLoading, isLoggedIn, nav, listingId, listings]);
 
@@ -30,14 +29,12 @@ export const CreateRequestPage = () => {
       console.error("Error: User is not logged in or user is undefined.");
       return;
     }
-    console.log("new Request submitted : ", requestData);
     const formattedData = {
       ...requestData,
       traveler: user.id,
       host: listing.host,
       listing: listing._id,
     };
-    console.log("formattedData : ", formattedData);
     handleCreateRequest(formattedData);
   };
 
