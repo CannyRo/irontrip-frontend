@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { getUserById, updateUserById } from "../services/user.service.js";
+import { Loader } from "../components/Loader";
 
 export const ProfilePage = () => {
   const { isLoggedIn, user } = useContext(AuthContext);
@@ -39,11 +40,12 @@ export const ProfilePage = () => {
     <main>
       <div className="home-container">
         {userData ? (
-          <div className="profile-card"><img
-                src={userData.profilePicture || "/default-profile.png"} // Fallback to a default image
-                alt={`${userData.name}'s profile`}
-                className="profile-picture"
-              />
+          <div className="profile-card">
+            <img
+              src={userData.profilePicture || "/default-profile.png"} // Fallback to a default image
+              alt={`${userData.name}'s profile`}
+              className="profile-picture"
+            />
             <div className="profil-datas">
               <div className="profile-info">
                 <h1>{userData.username.toUpperCase()}</h1>
@@ -51,42 +53,44 @@ export const ProfilePage = () => {
                 <p>{userData.country || "Country : Not specified."}</p>
               </div>
               <div className="bio-section">
-              <h3>Bio:</h3>
-              {isEditing ? (
-                <div>
-                  <textarea
-                    value={bio}
-                    onChange={(e) => setBio(e.target.value)}
-                    className="bio-input"
-                    rows={5}
-                  />
-                  <button onClick={handleBioUpdate} className="btn-form">
-                    Save
-                  </button>
-                  <button
-                    onClick={() => setIsEditing(false)}
-                    className="btn-form"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              ) : (
-                <div>
-                  <p>{userData.bio || "You can enter your Bio here..."} </p>
-                  <button
-                    onClick={() => setIsEditing(true)}
-                    className="btn-form"
-                  >
-                    Edit
-                  </button>
-                </div>
-              )}
+                <h3>Bio:</h3>
+                {isEditing ? (
+                  <div>
+                    <textarea
+                      value={bio}
+                      onChange={(e) => setBio(e.target.value)}
+                      className="bio-input"
+                      rows={5}
+                    />
+                    <button onClick={handleBioUpdate} className="btn-form">
+                      Save
+                    </button>
+                    <button
+                      onClick={() => setIsEditing(false)}
+                      className="btn-form"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                ) : (
+                  <div>
+                    <p>{userData.bio || "You can enter your Bio here..."} </p>
+                    <button
+                      onClick={() => setIsEditing(true)}
+                      className="btn-form"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
-            </div>
-            
           </div>
         ) : (
-          <p>Loading profile...</p>
+          <main>
+            <Loader />
+            <p>Loading profile...</p>
+          </main>
         )}
       </div>
     </main>
